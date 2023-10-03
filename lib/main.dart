@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Capstone',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -28,10 +28,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const Center( child: MyHomePage(title: 'Home')),
     );
   }
 }
@@ -51,7 +51,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _CarHomePage();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Color(0xFFb2c9d6),
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
@@ -121,5 +121,61 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class _CarHomePage extends State<MyHomePage>{
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children:
+        [
+          const Center(
+            child:
+                Padding(
+                      padding: EdgeInsets.fromLTRB(5, 70, 5, 20),
+                      child:
+                        Text(
+                          'Car Name',
+                          style:
+                            TextStyle(
+                            fontSize: 50,
+                            ),
+                      )
+                ),
+          ),
+          Center(
+             child: 
+                Padding(
+                  padding: EdgeInsets.fromLTRB(50,5,50, 30),
+                    child:
+                      Image.asset('assets/images/car_test_image.jpg')
+                ),
+          ),
+          const Center(
+            child:
+            Padding(
+              padding: EdgeInsets.all(20),
+              child:
+                Text(
+                    "Description of Car",
+                    style: TextStyle(
+                      fontSize: 20
+                    ),
+                )
+            ),
+          )
+        ]
+      ),
+      bottomNavigationBar: const BottomAppBar(
+        color: Color(0xFFb2c9d6),
+      ),
+    );
+
+
+
   }
 }
