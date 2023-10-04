@@ -1,3 +1,4 @@
+import 'package:capstone/AccountPage/account_main_page.dart';
 import 'package:capstone/DiagnosePage/diagnose_main_page.dart';
 import 'package:capstone/VideoPage/video_main_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,7 +32,10 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
   }
 
   void _accountPageButton(){
-
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const AccountPage())
+    );
   }
 
   @override
