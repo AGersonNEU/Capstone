@@ -1,4 +1,5 @@
 import 'package:capstone/DiagnosePage/diagnose_main_page.dart';
+import 'package:capstone/VideoPage/video_main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,10 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
   }
 
   void _videoPageButton(){
-
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const VideoPage())
+    );
   }
 
   void _diagnosePageButton(){
