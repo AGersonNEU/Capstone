@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 
 class VideoSearch extends StatefulWidget {
   const VideoSearch({super.key});
@@ -10,19 +10,43 @@ class VideoSearch extends StatefulWidget {
 }
 
 class _VideoSearchState extends State<VideoSearch> {
-
-  final YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: 'iLnmTe5Q2Qw',
-    flags: const YoutubePlayerFlags(
-      autoPlay: true,
-      mute: true,
-    ),
-  );
+  final SearchController controller = SearchController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-    );
+    return
+       Row(
+         children: [
+           SearchAnchor(builder: (context, controller) {
+             return Container(
+               padding: EdgeInsets.symmetric(horizontal: 50),
+               width: MediaQuery.of(context).size.width,
+               child: SearchBar(
+                 controller: controller,
+                 backgroundColor: MaterialStateProperty.all(
+                     Color(0xFFf6f9f1)
+                 ),
+                 leading: const Icon(Icons.search),
+                 hintText: 'Search For Videos',
+                 onTap: () {
+                   controller.openView();
+                 },
+               ),
+             );
+           }, suggestionsBuilder: (context, controller) {
+             return List<ListTile>.generate(3, (int index) {
+               final String item = 'item $index';
+               return ListTile(
+                   title: Text(item),
+                   onTap: () {
+                     setState(() {
+                       controller.closeView(item);
+                     });
+                   });
+             });
+           })
+         ],
+       );
   }
 }
+

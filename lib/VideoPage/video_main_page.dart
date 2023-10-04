@@ -1,3 +1,6 @@
+import 'package:capstone/VideoPage/video_playing_screen.dart';
+import 'package:capstone/VideoPage/video_search.dart';
+import 'package:capstone/VideoPage/video_thumbnail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +23,7 @@ class _VideoPageState extends State<VideoPage> {
               Center(
                 child: 
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+                      padding: EdgeInsets.fromLTRB(20, 60, 20, 30),
                       child:
                         Text(
                           'Video Library',
@@ -31,7 +34,12 @@ class _VideoPageState extends State<VideoPage> {
                         )
                     )
               ),
-
+              VideoSearch(),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(5, 10, 10, 5),
+                  child:
+                    VideoThumbnail()
+              )
             ],
           )
     );
