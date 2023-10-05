@@ -1,3 +1,4 @@
+import 'package:capstone/AccountPage/account_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class _AccountPageState extends State<AccountPage> {
                 Container(
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-
+                        color: Color(0xFF7c93a1)
                     ),
                   child:
                       const CircleAvatar(
@@ -42,8 +43,8 @@ class _AccountPageState extends State<AccountPage> {
                             'https://miro.medium.com/v2/resize:fit:1358/1*4oSQOg49I_LRlVUWpgbubg.jpeg',
                           ),
                       )
-
-                )
+                ),
+                const AccountData()
               ],
             )
         )

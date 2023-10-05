@@ -35,11 +35,11 @@ class _VideoPageState extends State<VideoPage> {
                     )
               ),
               VideoSearch(),
-              Padding(
-                  padding: EdgeInsets.fromLTRB(5, 10, 10, 5),
-                  child:
+              // Padding(
+              //     //padding: EdgeInsets.fromLTRB(5, 10, 10, 5),
+              //     child:
                     VideoThumbnail()
-              )
+              //)
             ],
           )
     );

@@ -11,6 +11,13 @@ class VideoPlaying extends StatefulWidget {
 
 class _VideoPlayingState extends State<VideoPlaying> {
   late YoutubePlayerController _controller;
+  YoutubeMetaData _youtubeMetaData = YoutubeMetaData();
+
+  void listener(){
+    setState(() {
+      _youtubeMetaData = _controller.metadata;
+    });
+  }
 
   @override
   void initState() {
@@ -21,9 +28,9 @@ class _VideoPlayingState extends State<VideoPlaying> {
             autoPlay: true,
             mute: false,
             enableCaption: true,
-            
         ),
     );
+
     super.initState();
   }
 
@@ -36,6 +43,9 @@ class _VideoPlayingState extends State<VideoPlaying> {
               YoutubePlayer(
               controller: _controller,
               showVideoProgressIndicator: true,
+                onReady: () {
+                _controller.addListener(listener);
+              },
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
@@ -49,17 +59,17 @@ class _VideoPlayingState extends State<VideoPlaying> {
                     ),
                 )
               ),
-              const Padding(
+              Padding(
                   padding:
-                    EdgeInsets.symmetric(
+                    const EdgeInsets.symmetric(
                         horizontal: 20,
                         vertical: 10
                     ),
                   child:
                     Text(
-                      'Video information maybe a transcript?',
+                      _controller.metadata.author,
                       style:
-                        TextStyle(
+                        const TextStyle(
                             fontSize: 15
                         ),
                     ),
