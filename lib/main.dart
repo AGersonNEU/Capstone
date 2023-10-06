@@ -1,3 +1,4 @@
+import 'package:capstone/CarCreatePage/car_create_main_page.dart';
 import 'package:flutter/material.dart';
 import 'HomePage/home_bottom_navbar.dart';
 
@@ -32,7 +33,10 @@ class MyHomePage extends StatefulWidget {
 class _CarHomePage extends State<MyHomePage>{
 
   void _createNewCar(){
-
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const CarCreatePage())
+    );
   }
 
 

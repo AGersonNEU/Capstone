@@ -1,4 +1,5 @@
 import 'package:capstone/AccountPage/account_data.dart';
+import 'package:capstone/AccountPage/log_out_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +45,8 @@ class _AccountPageState extends State<AccountPage> {
                           ),
                       )
                 ),
-                const AccountData()
+                const AccountData(),
+                const LogOutButton()
               ],
             )
         )
