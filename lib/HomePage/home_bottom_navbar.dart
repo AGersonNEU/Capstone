@@ -28,7 +28,7 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
   void _diagnosePageButton(){
     Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const LogInPage())
+        MaterialPageRoute(builder: (context) => const DiagnosePage())
     );
   }
 
