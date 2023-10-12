@@ -12,27 +12,47 @@ class _PartSpecsState extends State<PartSpecs> {
   Widget build(BuildContext context) {
     return const Row(
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
+        Center(
           child:
+          Align(
+            alignment: Alignment.centerLeft,
+            child:
             Text(
               'Part Name',
               style:
-                TextStyle(
+              TextStyle(
                   fontSize: 20
-                ),
+              ),
             ),
+          ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
+        Center(
           child:
+          Align(
+            alignment: Alignment.center,
+            child:
+            Text(
+              '........................................',
+              style:
+              TextStyle(
+                  fontSize: 20
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child:
+            Align(
+            alignment: Alignment.centerRight,
+            child:
             Text(
               'Price',
               style:
-                TextStyle(
+              TextStyle(
                   fontSize: 20
-                ),
+              ),
             ),
+          ),
         )
       ],
     );

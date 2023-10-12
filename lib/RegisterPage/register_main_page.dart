@@ -2,6 +2,7 @@ import 'package:capstone/LogInPage/sign_in_fields.dart';
 import 'package:capstone/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -18,6 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
         MaterialPageRoute(builder: (context) => const MyApp())
     );
   }
+
+
 
   @override
   Widget build(BuildContext context) {
