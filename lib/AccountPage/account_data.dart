@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
+import '../global_variables.dart';
 
 class AccountData extends StatefulWidget {
   const AccountData({super.key});
@@ -14,7 +15,8 @@ class _AccountDataState extends State<AccountData> {
 
   Future<dynamic> _getUsersName () async {
     //parses link to uri link
-    String url = "http://10.0.0.227:2024/user/1";
+    int id = GlobalVariables.account_id;
+    String url = "http://10.0.0.227:2024/user/$id";
     final requestLink = Uri.parse(url);
 
     //makes the request and returns the body
@@ -30,6 +32,9 @@ class _AccountDataState extends State<AccountData> {
       child:
         Column(
           children: [
+            Text(
+              GlobalVariables.account_id.toString()
+            ),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child:
