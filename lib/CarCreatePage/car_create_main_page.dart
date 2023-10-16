@@ -1,8 +1,13 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:capstone/CarCreatePage/car_year.dart';
 import 'package:capstone/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart';
+
+import '../global_variables.dart';
 
 class CarCreatePage extends StatefulWidget {
   const CarCreatePage({super.key});
@@ -12,8 +17,46 @@ class CarCreatePage extends StatefulWidget {
 }
 
 class _CarCreatePageState extends State<CarCreatePage> {
+  final nameController = TextEditingController();
+  final makeController = TextEditingController();
+  final modelController = TextEditingController();
+  final yearController = TextEditingController();
 
-  void _CreateCarButton(){
+  Future<Response> _createCar() async{
+
+    Map newCar = {
+      'name': nameController.text.toString(),
+      'make': makeController.text.toString(),
+      'model': modelController.text.toString(),
+      'year': yearController.text.toString()
+    };
+
+    var newCarJSON = jsonEncode(newCar);
+
+    String url = "http://10.0.0.227:2025/car";
+    final requestLink = Uri.parse(url);
+
+    //makes the request and returns the body
+    Response response = await post(
+      requestLink,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: newCarJSON,
+    );
+
+    return response;
+  }
+
+  void _createCarButton(){
+    _createCar().then((value){
+
+      var jsonBody = jsonDecode(value.body) as Map<String, dynamic>;
+      int id = jsonBody['id'];
+      GlobalVariables.car_id = id;
+
+    });
+
     Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const MyApp())
@@ -43,14 +86,15 @@ class _CarCreatePageState extends State<CarCreatePage> {
                     style: TextStyle(fontSize: 20),
                   ),
                 )),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Align(
                     alignment: Alignment.bottomLeft,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: TextField(
-                        decoration: InputDecoration(
+                        controller: nameController,
+                        decoration: const InputDecoration(
                             hintText: 'Give Your Car A Name',
                             border: OutlineInputBorder()),
                       ),
@@ -65,14 +109,15 @@ class _CarCreatePageState extends State<CarCreatePage> {
                     style: TextStyle(fontSize: 20),
                   ),
                 )),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Align(
                     alignment: Alignment.bottomLeft,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: TextField(
-                        decoration: InputDecoration(
+                        controller: makeController,
+                        decoration: const InputDecoration(
                             hintText: 'Enter A Make',
                             border: OutlineInputBorder()),
                       ),
@@ -87,14 +132,15 @@ class _CarCreatePageState extends State<CarCreatePage> {
                     style: TextStyle(fontSize: 20),
                   ),
                 )),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Align(
                     alignment: Alignment.bottomLeft,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: TextField(
-                        decoration: InputDecoration(
+                        controller: modelController,
+                        decoration: const InputDecoration(
                             hintText: 'Enter A Model',
                             border: OutlineInputBorder()),
                       ),
@@ -109,17 +155,24 @@ class _CarCreatePageState extends State<CarCreatePage> {
                     style: TextStyle(fontSize: 20),
                   ),
                 )),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45, vertical: 5),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 5),
                 child:
-                  CarYearPicker()
+                  TextFormField(
+                    controller: yearController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4),
+                    ],
+                  )
             ),
 
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
                 child:
                   ElevatedButton(
-                      onPressed: _CreateCarButton,
+                      onPressed: _createCarButton,
                       style:
                         ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFb2c9d6)

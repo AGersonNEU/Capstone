@@ -12,6 +12,9 @@ class AccountData extends StatefulWidget {
 }
 
 class _AccountDataState extends State<AccountData> {
+  late var _name = "";
+  late var _username = "";
+  late var _car = "";
 
   Future<dynamic> _getUsersName () async {
     //parses link to uri link
@@ -22,8 +25,9 @@ class _AccountDataState extends State<AccountData> {
     //makes the request and returns the body
     Response response = await get(requestLink);
     var jsonBody = jsonDecode(response.body) as Map<String, dynamic>;
-    var name = jsonBody['name'];
-    return name;
+    _name = jsonBody['name'].toString();
+    _username = jsonBody['username'].toString();
+    return response;
   }
 
   @override
@@ -46,13 +50,34 @@ class _AccountDataState extends State<AccountData> {
                             'Error: ${snapshot.error}'
                         );
                       }else{
-                        return Text(
-                          snapshot.data.toString() ?? 'name not found',
-                          style:
-                          const TextStyle(
-                              fontSize: 30
-                          ),
-                        );
+                        if(_car == ""){
+                          return
+                            Column(
+                                children:
+                                [
+                                  Text(
+                                    _name.toString() ?? 'name not found',
+                                    style:
+                                    const TextStyle(
+                                        fontSize: 50
+                                    ),
+                                  ),
+                                  Text(
+                                    _username.toString() ?? 'username not found',
+                                    style:
+                                    const TextStyle(
+                                        fontSize: 20,
+                                        fontStyle: FontStyle.italic
+                                    ),
+                                  )
+                                ]
+                            );
+                        }else{
+                          return
+                            const Text(
+                              "Oopsies"
+                            );
+                        }
                       }
                     }
                 )

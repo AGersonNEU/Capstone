@@ -27,7 +27,7 @@ class _SignInFieldState extends State<SignInField> {
       GlobalVariables.account_id = id;
 
     });
-    
+
     Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const MyApp())

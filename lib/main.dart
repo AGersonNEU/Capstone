@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:capstone/CarCreatePage/car_create_main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'HomePage/home_bottom_navbar.dart';
+import 'global_variables.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +35,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _CarHomePage extends State<MyHomePage>{
+  late var _carName = "Car Name";
+  late var _carDescription = "Make Model Year";
+
+  Future<dynamic> _getCar () async {
+    //parses link to uri link
+    int id = GlobalVariables.car_id;
+    String url = "http://10.0.0.227:2025/car/$id";
+    final requestLink = Uri.parse(url);
+
+    //makes the request and returns the body
+    Response response = await get(requestLink);
+    var jsonBody = jsonDecode(response.body) as Map<String, dynamic>;
+    _carName = jsonBody['name'].toString();
+    _carDescription = jsonBody['make'].toString() + " " + jsonBody['model'].toString() + " " + jsonBody['year'].toString();
+
+    return response;
+  }
 
   void _createNewCar(){
     Navigator.push(
@@ -46,41 +67,58 @@ class _CarHomePage extends State<MyHomePage>{
       body: Column(
         children:
         [
-          const Center(
-            child:
-                Padding(
-                      padding: EdgeInsets.fromLTRB(5, 70, 5, 20),
-                      child:
-                        Text(
-                          'Car Name',
-                          style:
-                            TextStyle(
-                            fontSize: 50,
-                            ),
-                      )
-                ),
+          FutureBuilder(
+              future: _getCar(),
+              builder: (context, snapshot){
+                if(snapshot.hasError){
+                  return Text(
+                    'Error: ${snapshot.error}'
+                    );
+                }else{
+                  return
+                    Column(
+                      children: [
+                        Center(
+                          child:
+                          Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 70, 5, 20),
+                              child:
+                              Text(
+                                _carName.toString() ?? '',
+                                style:
+                                const TextStyle(
+                                  fontSize: 50,
+                                ),
+                              )
+                          ),
+                        ),
+                        Center(
+                          child:
+                          Padding(
+                              padding: const EdgeInsets.fromLTRB(50,5,50, 30),
+                              child:
+                              Image.asset('assets/images/car_test_image.jpg')
+                          ),
+                        ),
+                        Center(
+                          child:
+                          Padding(
+                              padding: const EdgeInsets.all(20),
+                              child:
+                              Text(
+                                _carDescription.toString() ?? '',
+                                style: const TextStyle(
+                                    fontSize: 20
+                                ),
+                              )
+                          ),
+                        ),
+                      ],
+                    );
+                }
+              }
           ),
-          Center(
-             child: 
-                Padding(
-                  padding: EdgeInsets.fromLTRB(50,5,50, 30),
-                    child:
-                      Image.asset('assets/images/car_test_image.jpg')
-                ),
-          ),
-          const Center(
-            child:
-            Padding(
-              padding: EdgeInsets.all(20),
-              child:
-                Text(
-                    "Description of Car",
-                    style: TextStyle(
-                      fontSize: 20
-                    ),
-                )
-            ),
-          ),
+
           const Center(
             child:
             Padding(
@@ -94,6 +132,7 @@ class _CarHomePage extends State<MyHomePage>{
                 ),
             ),
           ),
+
           Center(
             child:
                 FloatingActionButton.extended(
@@ -110,7 +149,7 @@ class _CarHomePage extends State<MyHomePage>{
       bottomNavigationBar: const BottomAppBar(
         color: Color(0xFFb2c9d6),
         child:
-          const HomeBottomNav()
+          HomeBottomNav()
       ),
     );
 
