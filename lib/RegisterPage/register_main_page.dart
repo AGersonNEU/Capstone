@@ -47,7 +47,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
     var newAccountJSON = jsonEncode(newAccount);
 
-    String url = "http://10.0.0.227:2024/user";
+    String ip = GlobalVariables.ip;
+    String url = "http://$ip:2024/user";
     final requestLink = Uri.parse(url);
 
     //makes the request and returns the body

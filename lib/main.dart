@@ -41,14 +41,16 @@ class _CarHomePage extends State<MyHomePage>{
   Future<dynamic> _getCar () async {
     //parses link to uri link
     int id = GlobalVariables.car_id;
-    String url = "http://10.0.0.227:2025/car/$id";
+    String ip = GlobalVariables.ip;
+    String url = "http://$ip:2025/car/$id";
     final requestLink = Uri.parse(url);
 
     //makes the request and returns the body
     Response response = await get(requestLink);
     var jsonBody = jsonDecode(response.body) as Map<String, dynamic>;
+
     _carName = jsonBody['name'].toString();
-    _carDescription = jsonBody['make'].toString() + " " + jsonBody['model'].toString() + " " + jsonBody['year'].toString();
+    _carDescription = "${jsonBody['make']} ${jsonBody['model']} ${jsonBody['year']}";
 
     return response;
   }

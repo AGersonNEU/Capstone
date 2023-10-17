@@ -19,7 +19,8 @@ class _AccountDataState extends State<AccountData> {
   Future<dynamic> _getUsersName () async {
     //parses link to uri link
     int id = GlobalVariables.account_id;
-    String url = "http://10.0.0.227:2024/user/$id";
+    String ip = GlobalVariables.ip;
+    String url = "http://$ip:2024/user/$id";
     final requestLink = Uri.parse(url);
 
     //makes the request and returns the body

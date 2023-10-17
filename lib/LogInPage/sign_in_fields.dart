@@ -42,7 +42,8 @@ class _SignInFieldState extends State<SignInField> {
     };
 
     var newAccountJSON = jsonEncode(newAccount);
-    String url = "http://10.0.0.227:2024/user/login";
+    String ip = GlobalVariables.ip;
+    String url = "http://$ip:2024/user/login";
     final requestLink =Uri.parse(url);
 
     //makes the request and returns the body

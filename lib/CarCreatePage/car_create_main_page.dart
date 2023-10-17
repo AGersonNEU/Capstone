@@ -33,7 +33,8 @@ class _CarCreatePageState extends State<CarCreatePage> {
 
     var newCarJSON = jsonEncode(newCar);
 
-    String url = "http://10.0.0.227:2025/car";
+    String ip = GlobalVariables.ip;
+    String url = "http://$ip:2025/car";
     final requestLink = Uri.parse(url);
 
     //makes the request and returns the body
