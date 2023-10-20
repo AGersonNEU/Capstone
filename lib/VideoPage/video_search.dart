@@ -19,12 +19,12 @@ class _VideoSearchState extends State<VideoSearch> {
          children: [
            SearchAnchor(builder: (context, controller) {
              return Container(
-               padding: EdgeInsets.symmetric(horizontal: 50),
+               padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                width: MediaQuery.of(context).size.width,
                child: SearchBar(
                  controller: controller,
                  backgroundColor: MaterialStateProperty.all(
-                     Color(0xFFf6f9f1)
+                     const Color(0xFFf6f9f1)
                  ),
                  leading: const Icon(Icons.search),
                  hintText: 'Search For Videos',

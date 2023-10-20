@@ -48,7 +48,7 @@ class _VideoPlayingState extends State<VideoPlaying> {
               },
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child:
                 Text(
                   _controller.metadata.title,
