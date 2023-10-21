@@ -41,11 +41,11 @@ class _VideoPlayingState extends State<VideoPlaying> {
           Column(
             children: [
               YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: true,
-                onReady: () {
-                _controller.addListener(listener);
-              },
+                controller: _controller,
+                showVideoProgressIndicator: true,
+                  onReady: () {
+                  _controller.addListener(listener);
+                },
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
