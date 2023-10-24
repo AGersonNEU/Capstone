@@ -38,7 +38,23 @@ class _VideoPageState extends State<VideoPage> {
               Padding(
                 padding: EdgeInsets.fromLTRB(5, 10, 10, 5),
                   child:
-                    VideoThumbnail()
+                    VideoThumbnail(
+                      videoId: 0,
+                    )
+              ),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(5, 10, 10, 5),
+                  child:
+                  VideoThumbnail(
+                    videoId: 1,
+                  )
+              ),
+              Padding(
+                  padding: EdgeInsets.fromLTRB(5, 10, 10, 5),
+                  child:
+                  VideoThumbnail(
+                      videoId: 2
+                  )
               )
             ],
           )

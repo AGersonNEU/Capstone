@@ -1,3 +1,4 @@
+import 'package:capstone/global_variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -12,6 +13,7 @@ class VideoPlaying extends StatefulWidget {
 class _VideoPlayingState extends State<VideoPlaying> {
   late YoutubePlayerController _controller;
   YoutubeMetaData _youtubeMetaData = YoutubeMetaData();
+  final _videoId = GlobalVariables.video_id;
 
   void listener(){
     setState(() {
@@ -22,7 +24,7 @@ class _VideoPlayingState extends State<VideoPlaying> {
   @override
   void initState() {
     _controller = YoutubePlayerController(
-      initialVideoId: 'zLVtD1BvZCU',
+      initialVideoId: _videoId,
       flags:
         const YoutubePlayerFlags(
             autoPlay: true,

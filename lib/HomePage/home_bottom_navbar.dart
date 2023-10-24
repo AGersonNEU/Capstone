@@ -2,6 +2,7 @@ import 'package:capstone/AccountPage/account_main_page.dart';
 import 'package:capstone/DiagnosePage/diagnose_main_page.dart';
 import 'package:capstone/LogInPage/login_main_page.dart';
 import 'package:capstone/VideoPage/video_main_page.dart';
+import 'package:capstone/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,10 @@ class HomeBottomNav extends StatefulWidget {
 class _HomeBottomNavState extends State<HomeBottomNav> {
 
   void _homePageButton(){
-
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const MyApp())
+    );
   }
 
   void _videoPageButton(){

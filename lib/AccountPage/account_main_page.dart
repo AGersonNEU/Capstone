@@ -3,6 +3,8 @@ import 'package:capstone/AccountPage/log_out_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../HomePage/home_bottom_navbar.dart';
+
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
 
@@ -49,8 +51,12 @@ class _AccountPageState extends State<AccountPage> {
                 const LogOutButton()
               ],
             )
-        )
-      
+        ),
+      bottomNavigationBar: const BottomAppBar(
+          color: Color(0xFFb2c9d6),
+          child:
+            HomeBottomNav()
+      ),
     );
   }
 }
