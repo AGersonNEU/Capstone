@@ -1,5 +1,6 @@
 package gerson.abby.capstonecardb.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,10 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int userId;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     private String name;
 
@@ -31,6 +35,7 @@ public class Car {
         this.make = dataCar.getMake();
         this.model = dataCar.getModel();
         this.year = dataCar.getYear();
+        this.account = dataCar.getAccount();
     }
 
     public Car() {

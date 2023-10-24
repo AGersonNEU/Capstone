@@ -18,12 +18,16 @@ public class CarController {
 
     private final CarRepository carRepo;
     public CarController(CarRepository carRepo){
+
         this.carRepo = carRepo;
     }
 
     ////////////////////////CREATE///////////////////////////
     @PostMapping("")
     public Car createCar(@RequestBody DataCar car){
+
+        car.setAccount(carRepo.findAccountById(4));
+
         return carRepo.save(new Car(car));
     }
 
@@ -31,17 +35,19 @@ public class CarController {
     ////////////////////////READ///////////////////////////
     @GetMapping("/{id}")
     public Car findCarByID(@PathVariable int id){
+
         return carRepo.findCarById(id);
     }
 
     @GetMapping("/name/{name}")
     public Car findCarByName(@PathVariable String name){
+
         return carRepo.findCarByName(name);
     }
 
-    @GetMapping("/all/{userId}")
-    public List<Car> findAllCarsforAccount(@PathVariable int userId){
-        return carRepo.findCarsByUserId(userId);
+    @GetMapping("/all/{accountId}")
+    public List<Car> findAllCarsforAccount(@PathVariable int accountId){
+        return carRepo.findCarsByAccount_Id(accountId);
     }
 
 
@@ -57,6 +63,7 @@ public class CarController {
     ////////////////////////DELETE///////////////////////////
     @DeleteMapping("/{id}")
     public void deleteCar(@PathVariable int id){
+
         carRepo.delete(carRepo.findCarById(id));
     }
 
