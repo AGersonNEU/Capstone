@@ -48,14 +48,20 @@ class _DiagnosePageState extends State<DiagnosePage> {
               child:
                 ElevatedButton(
                     onPressed: _diagnosisResults,
+                    style:
+                      ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFB2C9D6),
+                        shadowColor: const Color(0xFF1E1F1E),
+                      ),
                     child:
                       const Text(
                         'Submit Quiz',
                         style:
                           TextStyle(
-                            fontSize: 20
+                            fontSize: 20,
+                            color: Color(0xFFF6F9FA)
                           ),
-                      )
+                      ),
                 ),
             )
           ],

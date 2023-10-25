@@ -13,12 +13,12 @@ class HomeBottomNav extends StatefulWidget {
   State<HomeBottomNav> createState() => _HomeBottomNavState();
 }
 
-class _HomeBottomNavState extends State<HomeBottomNav> {
+class _HomeBottomNavState extends State<HomeBottomNav> with TickerProviderStateMixin{
 
   void _homePageButton(){
     Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const MyApp())
+        MaterialPageRoute(builder: (context) => const MyHomePage())
     );
   }
 
@@ -45,52 +45,54 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
 
   @override
   Widget build(BuildContext context) {
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        IconButton(
-          onPressed: _homePageButton,
-          icon:
-            const Icon(
-                Icons.home_outlined,
-                size: 40,
-                color:
+    return
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+                onPressed: _homePageButton,
+                icon:
+                const Icon(
+                  Icons.home_outlined,
+                  size: 40,
+                  color:
                   const Color(0xFF1e1f1e),
-            )
-        ),
-        IconButton(
-          onPressed: _videoPageButton,
-          icon:
-            const Icon(
-                Icons.play_circle_outline,
-                size: 40,
-                color:
+                )
+            ),
+            IconButton(
+                onPressed: _videoPageButton,
+                icon:
+                const Icon(
+                  Icons.play_circle_outline,
+                  size: 40,
+                  color:
+                    Color(0xFF1e1f1e),
+                )
+            ),
+            IconButton(
+                onPressed: _diagnosePageButton,
+                icon:
+                const Icon(
+                  Icons.construction_sharp,
+                  size: 40,
+                  color:
                   const Color(0xFF1e1f1e),
-            )
-        ),
-        IconButton(
-          onPressed: _diagnosePageButton,
-          icon:
-            const Icon(
-                Icons.construction_sharp,
-                size: 40,
-                color:
+                )
+            ),
+            IconButton(
+                onPressed: _accountPageButton,
+                icon:
+                const Icon(
+                  Icons.account_circle_rounded,
+                  size: 40,
+                  color:
                   const Color(0xFF1e1f1e),
+                )
             )
-        ),
-        IconButton(
-          onPressed: _accountPageButton,
-          icon:
-            const Icon(
-                Icons.account_circle_rounded,
-                size: 40,
-                color:
-                  const Color(0xFF1e1f1e),
-            )
-        )
-      ],
-    );
+          ],
+        );
 
   }
+
 }
+

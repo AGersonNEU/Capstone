@@ -60,7 +60,7 @@ class _CarCreatePageState extends State<CarCreatePage> {
 
     Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const MyApp())
+        MaterialPageRoute(builder: (context) => const MyHomePage())
     );
   }
 

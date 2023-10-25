@@ -4,6 +4,27 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Capstone',
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      home: const Center( child: LogInPage()),
+    );
+  }
+}
+
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
 
