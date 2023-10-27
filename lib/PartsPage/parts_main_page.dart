@@ -30,11 +30,11 @@ class _PartsPageState extends State<PartsPage> {
   @override
   Widget build(BuildContext context) {
 
-      return Scaffold(
+      return const Scaffold(
           body:
               Column(
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
                     child:
                     Center(
@@ -49,34 +49,34 @@ class _PartsPageState extends State<PartsPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 50),
+                    padding: EdgeInsets.symmetric(vertical: 50),
                     child:
                       Center(
                       child:
                       Column(
                         children: [
-                          const PartSpecs(),
-                          const PartSpecs(),
-                          const PartSpecs(),
-                          FutureBuilder(
-                              future: _getUsersName(),
-                              builder: (context, snapshot){
-
-                                if(snapshot.hasError){
-                                  return Text(
-                                      'Error: ${snapshot.error}'
-                                  );
-                                }else{
-                                  return Text(
-                                    snapshot.data.toString() ?? '',
-                                    style:
-                                      const TextStyle(
-                                        fontSize: 30
-                                      ),
-                                  );
-                                }
-                              }
-                          )
+                          PartSpecs(),
+                          PartSpecs(),
+                          PartSpecs(),
+                          // FutureBuilder(
+                          //     future: _getUsersName(),
+                          //     builder: (context, snapshot){
+                          //
+                          //       if(snapshot.hasError){
+                          //         return Text(
+                          //             'Error: ${snapshot.error}'
+                          //         );
+                          //       }else{
+                          //         return Text(
+                          //           snapshot.data.toString() ?? '',
+                          //           style:
+                          //             const TextStyle(
+                          //               fontSize: 30
+                          //             ),
+                          //         );
+                          //       }
+                          //     }
+                          // )
                         ],
                       ),
                     ),

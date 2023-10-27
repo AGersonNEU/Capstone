@@ -53,6 +53,7 @@ Future<dynamic> _findVideoId() async{
 
     if(_videoThumbnail == 'null'){
       _videoThumbnail = 'https://d33v4339jhl8k0.cloudfront.net/docs/assets/591c8a010428634b4a33375c/images/5ab4866b2c7d3a56d8873f4c/file-MrylO8jADD.png';
+      //https://d33v4339jhl8k0.cloudfront.net/docs/assets/591c8a010428634b4a33375c/images/5ab4866b2c7d3a56d8873f4c/file-MrylO8jADD.png
     }
 
     if(_videoTitle == 'null'){
@@ -104,7 +105,7 @@ Future<dynamic> _findVideoId() async{
                       onPressed: _videoPlayingScreen,
                       icon:
                           Image.network(
-                            _videoThumbnail ?? 'assets/images/video_thumbnail.webp',
+                            _videoThumbnail,
                             width: 170,
                           )
                   ),
