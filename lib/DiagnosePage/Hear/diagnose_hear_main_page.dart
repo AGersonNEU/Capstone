@@ -1,3 +1,5 @@
+import 'package:capstone/DiagnosePage/diagnose_answer.dart';
+import 'package:capstone/DiagnosePage/diagnosis_question.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +15,14 @@ class _DiagnoseHearPageState extends State<DiagnoseHearPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body:
-      Text(
-          'hear page'
-      ),
+        Column(
+            children: [
+              DiagnosisQuestion(),
+              DiagnoseAnswer(question_answer: 'Purple'),
+              DiagnoseAnswer(question_answer: 'Blue'),
+              DiagnoseAnswer(question_answer: 'Pink')
+            ],
+        ),
     );
   }
 }

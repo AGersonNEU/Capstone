@@ -9,6 +9,7 @@ class GlobalVariables{
   static String video_search = 'how to change my oil';
   static int video_index = 0;
   static String video_id = 'hello world';
+  static int diagnose_car_id = 0;
 
   //for sure colors///
 //b2c9d6

@@ -44,9 +44,6 @@ class _DiagnosisQuestionState extends State<DiagnosisQuestion> {
               )
           ),
         ),
-        const DiagnoseAnswer(
-            question_answer: 'Transmission',
-        ),
         Align(
           alignment: Alignment.bottomCenter,
           child:
@@ -56,7 +53,7 @@ class _DiagnosisQuestionState extends State<DiagnosisQuestion> {
                   Row(
                     children: [
                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
                           child:
                             ElevatedButton(
                             onPressed: _back,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:capstone/CarCreatePage/car_create_main_page.dart';
+import 'package:capstone/DiagnosePage/diagnose_main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'HomePage/home_bottom_navbar.dart';
@@ -33,6 +34,7 @@ class _CarHomePage extends State<MyHomePage>{
   late var _carDescriptionFour = "Make Model Year";
   late var _carImageFour = "";
 
+  late var _carId = 0;
 
   Future<dynamic> _getCar () async {
     //parses link to uri link
@@ -50,6 +52,9 @@ class _CarHomePage extends State<MyHomePage>{
     var car2 = accountCars[1];
     var car3 = accountCars[2];
     var car4 = accountCars[3];
+
+    _carId = car['id'];
+
 
     _carNameOne = car['name'].toString();
     _carDescriptionOne = "${car['make']} ${car['model']} ${car['year']}";
@@ -77,6 +82,15 @@ class _CarHomePage extends State<MyHomePage>{
     Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const CarCreatePage())
+    );
+  }
+
+  _diagnoseCar(){
+    GlobalVariables.diagnose_car_id = _carId;
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const DiagnosePage())
     );
   }
 
@@ -160,7 +174,7 @@ class _CarHomePage extends State<MyHomePage>{
                     const Center(
                       child:
                       Padding(
-                        padding: EdgeInsets.fromLTRB(50,5,50, 30),
+                        padding: EdgeInsets.fromLTRB(50,5,50, 10),
                         child:
                         Text(
                           "Problems With Car",
@@ -168,6 +182,22 @@ class _CarHomePage extends State<MyHomePage>{
                               fontSize: 20
                           ),
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      child:
+                      TextButton(
+                          onPressed: _diagnoseCar,
+                          child:
+                          const Text(
+                            'Diagnose Car',
+                            style:
+                            TextStyle(
+                                fontSize: 20,
+                                color: Color(0xFF7c93a1)
+                            ),
+                          )
                       ),
                     ),
                   ]
@@ -428,7 +458,7 @@ class _CarHomePage extends State<MyHomePage>{
           ),
       floatingActionButton:
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 150),
+            padding: const EdgeInsets.symmetric(vertical: 150),
             child:
               FloatingActionButton.extended(
                 onPressed: _createNewCar,

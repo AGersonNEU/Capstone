@@ -1,7 +1,7 @@
 import 'package:capstone/DiagnosePage/car_search.dart';
 import 'package:capstone/DiagnosePage/diagnose_feel_main_page.dart';
-import 'package:capstone/DiagnosePage/diagnose_hear_main_page.dart';
-import 'package:capstone/DiagnosePage/diagnose_see_main_page.dart';
+import 'package:capstone/DiagnosePage/Hear/diagnose_hear_main_page.dart';
+import 'package:capstone/DiagnosePage/See/diagnose_see_main_page.dart';
 import 'package:capstone/DiagnosePage/diagnose_smell_main_page.dart';
 import 'package:capstone/DiagnosePage/diagnose_wont_start_main_page.dart';
 import 'package:capstone/DiagnosePage/diagnosis_question.dart';
