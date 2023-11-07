@@ -16,22 +16,59 @@ class MyHomePage extends StatefulWidget {
 
 class _CarHomePage extends State<MyHomePage>{
   final PageController pageController = PageController(initialPage: 0);
-  late var _carName = "Car Name";
-  late var _carDescription = "Make Model Year";
+
+  late var _carNameOne = "Car Name";
+  late var _carDescriptionOne = "Make Model Year";
+  late var _carImageOne = "";
+
+  late var _carNameTwo = "Car Name";
+  late var _carDescriptionTwo = "Make Model Year";
+  late var _carImageTwo = "";
+
+  late var _carNameThree = "Car Name";
+  late var _carDescriptionThree = "Make Model Year";
+  late var _carImageThree = "";
+
+  late var _carNameFour = "Car Name";
+  late var _carDescriptionFour = "Make Model Year";
+  late var _carImageFour = "";
+
 
   Future<dynamic> _getCar () async {
     //parses link to uri link
-    int id = GlobalVariables.car_id;
+    int id = GlobalVariables.account_id;
     String ip = GlobalVariables.ip;
-    String url = "http://$ip:2025/car/$id";
+    String url = "http://$ip:2025/car/all/$id";
     final requestLink = Uri.parse(url);
 
     //makes the request and returns the body
     Response response = await get(requestLink);
-    var jsonBody = jsonDecode(response.body) as Map<String, dynamic>;
+    List accountCars = jsonDecode(response.body);
 
-    _carName = jsonBody['name'].toString();
-    _carDescription = "${jsonBody['make']} ${jsonBody['model']} ${jsonBody['year']}";
+    //List<dynamic> accountCars = jsonDecode(response.body);
+    var car = accountCars[0];
+    var car2 = accountCars[1];
+    var car3 = accountCars[2];
+    var car4 = accountCars[3];
+
+    _carNameOne = car['name'].toString();
+    _carDescriptionOne = "${car['make']} ${car['model']} ${car['year']}";
+    _carImageOne = car['image'].toString();
+
+    _carNameTwo = car2['name'].toString();
+    _carDescriptionTwo = "${car2['make']} ${car2['model']} ${car2['year']}";
+    _carImageTwo = car2['image'].toString();
+
+    _carNameThree = car3['name'].toString();
+    _carDescriptionThree = "${car3['make']} ${car3['model']} ${car3['year']}";
+    _carImageThree = car3['image'].toString();
+
+    if(car4 != null ){
+      _carNameFour = car4['name'].toString();
+      _carDescriptionFour = "${car4['make']} ${car4['model']} ${car4['year']}";
+      _carImageFour = car4['image'].toString();
+    }
+
 
     return response;
   }
@@ -73,7 +110,7 @@ class _CarHomePage extends State<MyHomePage>{
                                               Row(
                                                 children: [
                                                     Text(
-                                                      _carName.toString() ?? '',
+                                                      _carNameOne.toString() ?? '',
                                                       style:
                                                       const TextStyle(
                                                         fontSize: 50,
@@ -98,7 +135,7 @@ class _CarHomePage extends State<MyHomePage>{
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(50,5,50, 30),
                                         child:
-                                        Image.asset('assets/images/car_test_image.jpg')
+                                        Image.network(_carImageOne)
                                     ),
                                   ),
                                   Center(
@@ -107,7 +144,7 @@ class _CarHomePage extends State<MyHomePage>{
                                         padding: const EdgeInsets.all(20),
                                         child:
                                         Text(
-                                          _carDescription.toString() ?? '',
+                                          _carDescriptionOne.toString() ?? '',
                                           style: const TextStyle(
                                               fontSize: 20
                                           ),
@@ -157,7 +194,7 @@ class _CarHomePage extends State<MyHomePage>{
                                           Row(
                                             children: [
                                               Text(
-                                                _carName.toString() ?? '',
+                                                _carNameTwo.toString() ?? '',
                                                 style:
                                                 const TextStyle(
                                                   fontSize: 50,
@@ -182,7 +219,7 @@ class _CarHomePage extends State<MyHomePage>{
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(50,5,50, 30),
                                         child:
-                                        Image.asset('assets/images/car_test_image.jpg')
+                                        Image.network(_carImageTwo)
                                     ),
                                   ),
                                   Center(
@@ -191,7 +228,7 @@ class _CarHomePage extends State<MyHomePage>{
                                         padding: const EdgeInsets.all(20),
                                         child:
                                         Text(
-                                          _carDescription.toString() ?? '',
+                                          _carDescriptionTwo.toString() ?? '',
                                           style: const TextStyle(
                                               fontSize: 20
                                           ),
@@ -241,7 +278,7 @@ class _CarHomePage extends State<MyHomePage>{
                                           Row(
                                             children: [
                                               Text(
-                                                _carName.toString() ?? '',
+                                                _carNameThree.toString() ?? '',
                                                 style:
                                                 const TextStyle(
                                                   fontSize: 50,
@@ -266,7 +303,7 @@ class _CarHomePage extends State<MyHomePage>{
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(50,5,50, 30),
                                         child:
-                                        Image.asset('assets/images/car_test_image.jpg')
+                                          Image.network(_carImageThree)
                                     ),
                                   ),
                                   Center(
@@ -275,7 +312,7 @@ class _CarHomePage extends State<MyHomePage>{
                                         padding: const EdgeInsets.all(20),
                                         child:
                                         Text(
-                                          _carDescription.toString() ?? '',
+                                          _carDescriptionThree.toString() ?? '',
                                           style: const TextStyle(
                                               fontSize: 20
                                           ),
@@ -325,7 +362,7 @@ class _CarHomePage extends State<MyHomePage>{
                                           Row(
                                             children: [
                                               Text(
-                                                _carName.toString() ?? '',
+                                                _carNameFour.toString() ?? '',
                                                 style:
                                                 const TextStyle(
                                                   fontSize: 50,
@@ -350,7 +387,7 @@ class _CarHomePage extends State<MyHomePage>{
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(50,5,50, 30),
                                         child:
-                                        Image.asset('assets/images/car_test_image.jpg')
+                                          Image.network(_carImageFour)
                                     ),
                                   ),
                                   Center(
@@ -359,7 +396,7 @@ class _CarHomePage extends State<MyHomePage>{
                                         padding: const EdgeInsets.all(20),
                                         child:
                                         Text(
-                                          _carDescription.toString() ?? '',
+                                          _carDescriptionFour.toString() ?? '',
                                           style: const TextStyle(
                                               fontSize: 20
                                           ),

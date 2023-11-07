@@ -1,5 +1,8 @@
+import 'package:capstone/DiagnosePage/diagnose_answer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../DiagnoseResultsPage/diagnose_results_main_page.dart';
 
 class DiagnosisQuestion extends StatefulWidget {
   const DiagnosisQuestion({super.key});
@@ -10,26 +13,30 @@ class DiagnosisQuestion extends StatefulWidget {
 
 class _DiagnosisQuestionState extends State<DiagnosisQuestion> {
 
-  void _question (){
-
+  void _back (){
+    Navigator.pop(
+        context
+    );
   }
 
-  void _answers(){
-    //return List<Checkbox>;
+  void _next(){
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const DiagnosisQuestion()));
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        Align(
+        const Align(
           alignment: Alignment.centerLeft,
           child:
           Padding(
               padding: EdgeInsets.fromLTRB(20, 40, 20, 5),
               child:
               Text(
-                'Question One',
+                'Where is the noise coming from?',
                 style:
                 TextStyle(
                     fontSize: 20
@@ -37,35 +44,63 @@ class _DiagnosisQuestionState extends State<DiagnosisQuestion> {
               )
           ),
         ),
-        Align(
-          alignment: Alignment.center,
-          child:
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 5, 10, 20),
-              child:
-              Text(
-                'What color is the sky? (select multiple)',
-                style:
-                TextStyle(
-                    fontSize: 17
-                ),
-              )
-            ),
+        const DiagnoseAnswer(
+            question_answer: 'Transmission',
         ),
         Align(
-          alignment: Alignment.center,
+          alignment: Alignment.bottomCenter,
           child:
-            Padding(
-              padding: EdgeInsets.fromLTRB(22, 0, 0, 22),
-              child:
-              Text(
-                'A. Purple',
-                style:
-                TextStyle(
-                    fontSize: 17
-                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100),
+                child:
+                  Row(
+                    children: [
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child:
+                            ElevatedButton(
+                            onPressed: _back,
+                            style:
+                            ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFFB2C9D6),
+                              shadowColor: const Color(0xFF1E1F1E),
+                            ),
+                            child:
+                            const Text(
+                              'back',
+                              style:
+                              TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xFFF6F9FA)
+                              ),
+                            ),
+                          ),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child:
+                          ElevatedButton(
+                            onPressed: _next,
+                            style:
+                            ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFFB2C9D6),
+                              shadowColor: const Color(0xFF1E1F1E),
+                            ),
+                            child:
+                            const Text(
+                              'next',
+                              style:
+                              TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xFFF6F9FA)
+                              ),
+                            ),
+                          ),
+                      )
+                    ],
+                  ),
               )
-          ),
+
         )
       ],
     );

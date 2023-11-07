@@ -38,26 +38,30 @@ class _LogInPageState extends State<LogInPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
      body:
-        Center(
-          child:
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 50, 20, 20),
-                  child:
-                  Text(
-                    'Sign In',
-                    style:
-                    TextStyle(
-                        fontSize: 50
-                    ),
-                  ),
-                ),
-                SignInField(),
-                RegisterButton()
-              ],
-            ),
-        )
+         SingleChildScrollView(
+           physics: NeverScrollableScrollPhysics(),
+           child:
+            Center(
+             child:
+             Column(
+               children: [
+                 Padding(
+                   padding: EdgeInsets.fromLTRB(20, 50, 20, 20),
+                   child:
+                   Text(
+                     'Sign In',
+                     style:
+                     TextStyle(
+                         fontSize: 50
+                     ),
+                   ),
+                 ),
+                 SignInField(),
+                 RegisterButton()
+               ],
+             ),
+           ),
+         )
     );
   }
 }

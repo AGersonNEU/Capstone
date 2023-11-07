@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:capstone/AccountPage/account_car_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import '../global_variables.dart';
@@ -37,9 +38,9 @@ class _AccountDataState extends State<AccountData> {
       child:
         Column(
           children: [
-            Text(
-              GlobalVariables.account_id.toString()
-            ),
+            // Text(
+            //   GlobalVariables.account_id.toString()
+            // ),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child:
@@ -54,29 +55,108 @@ class _AccountDataState extends State<AccountData> {
                         if(_car == ""){
                           return
                             Column(
-                                children:
-                                [
-                                  Text(
-                                    _name.toString() ?? 'name not found',
-                                    style:
-                                    const TextStyle(
-                                        fontSize: 50
+                              children: [
+                                Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    child:
+                                    Container(
+                                        decoration:
+                                        BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20),
+                                          color: const Color(0xFFEFF4F7),
+                                        ),
+                                        child:
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                          child:
+                                          Column(
+                                              children:
+                                              [
+                                                Text(
+                                                  _name.toString() ?? 'name not found',
+                                                  style:
+                                                  const TextStyle(
+                                                      fontSize: 50
+                                                  ),
+                                                ),
+                                                Text(
+                                                  _username.toString() ?? 'username not found',
+                                                  style:
+                                                  const TextStyle(
+                                                      fontSize: 20,
+                                                      fontStyle: FontStyle.italic
+                                                  ),
+                                                ),
+                                              ]
+                                          ),
+                                        )
                                     ),
-                                  ),
-                                  Text(
-                                    _username.toString() ?? 'username not found',
-                                    style:
-                                    const TextStyle(
-                                        fontSize: 20,
-                                        fontStyle: FontStyle.italic
+                                ),
+                                Container(
+                                    decoration:
+                                    BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: const Color(0xFFEFF4F7),
                                     ),
-                                  )
-                                ]
+                                    child:
+                                    const Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: 70, vertical: 15),
+                                        child:
+                                          AccountCarInfo()
+                                    )
+                                )
+                              ],
                             );
                         }else{
                           return
-                            const Text(
-                              "Oopsies"
+                            Column(
+                              children: [
+                                Container(
+                                    decoration:
+                                    BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: const Color(0xFFEFF4F7),
+                                    ),
+                                    child:
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                      child:
+                                      Column(
+                                          children:
+                                          [
+                                            Text(
+                                              _name.toString() ?? 'name not found',
+                                              style:
+                                              const TextStyle(
+                                                  fontSize: 50
+                                              ),
+                                            ),
+                                            Text(
+                                              _username.toString() ?? 'username not found',
+                                              style:
+                                              const TextStyle(
+                                                  fontSize: 20,
+                                                  fontStyle: FontStyle.italic
+                                              ),
+                                            ),
+                                          ]
+                                      ),
+                                    )
+                                ),
+                                Container(
+                                    decoration:
+                                    BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: const Color(0xFFEFF4F7),
+                                    ),
+                                    child:
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                      child:
+                                        AccountCarInfo()
+                                    )
+                                )
+                              ],
                             );
                         }
                       }
