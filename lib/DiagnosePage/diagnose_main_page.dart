@@ -1,9 +1,9 @@
 import 'package:capstone/DiagnosePage/car_search.dart';
-import 'package:capstone/DiagnosePage/diagnose_feel_main_page.dart';
+import 'package:capstone/DiagnosePage/Feel/diagnose_feel_main_page.dart';
 import 'package:capstone/DiagnosePage/Hear/diagnose_hear_main_page.dart';
 import 'package:capstone/DiagnosePage/See/diagnose_see_main_page.dart';
-import 'package:capstone/DiagnosePage/diagnose_smell_main_page.dart';
-import 'package:capstone/DiagnosePage/diagnose_wont_start_main_page.dart';
+import 'package:capstone/DiagnosePage/Smell/diagnose_smell_main_page.dart';
+import 'package:capstone/DiagnosePage/WontStart/diagnose_wont_start_main_page.dart';
 import 'package:capstone/DiagnosePage/diagnosis_question.dart';
 import 'package:capstone/DiagnoseResultsPage/diagnose_results_main_page.dart';
 import 'package:capstone/back_button.dart';
@@ -246,6 +246,7 @@ class _DiagnosePageState extends State<DiagnosePage> {
                       )
                   ),
                 ),
+
                 Center(
                     child:
                     Padding(
