@@ -1,30 +1,44 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart';
+
+import '../global_variables.dart';
 
 class AccountCarInfo extends StatefulWidget {
-  const AccountCarInfo({super.key});
+  final String car;
+
+  const AccountCarInfo({
+    super.key,
+    required this.car
+  });
 
   @override
-  State<AccountCarInfo> createState() => _AccountCarInfoState();
+  State<AccountCarInfo> createState() => _AccountCarInfoState(car);
 }
 
 class _AccountCarInfoState extends State<AccountCarInfo> {
-  
+  late String car_info = "";
+
+  _AccountCarInfoState(String car){
+   car_info = car;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const
-    Column(
+    return Column(
       children:[
         Center(
           child:
           Text(
-            'Car Name',
+            car_info,
             style:
-            TextStyle(
+            const TextStyle(
                 fontSize: 15
             ),
           ),
         ),
-        Center(
+        const Center(
           child:
             Row(
             children: [
@@ -50,6 +64,5 @@ class _AccountCarInfoState extends State<AccountCarInfo> {
         )
       ]
     );
-
   }
 }
