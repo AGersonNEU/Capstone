@@ -66,183 +66,187 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: 
-        Column(
-          children: [
-            const Padding(
-                padding: EdgeInsets.fromLTRB(40, 50, 40, 20),
-                child:
-                Center(
+      body:
+          SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
+            child:
+            Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(40, 50, 40, 20),
                   child:
-                  Text(
-                    'Register',
-                    style:
-                    TextStyle(
-                        fontSize: 50
+                  Center(
+                    child:
+                    Text(
+                      'Register',
+                      style:
+                      TextStyle(
+                          fontSize: 50
+                      ),
                     ),
                   ),
                 ),
-            ),
 
-            const Padding(
-                padding: EdgeInsets.fromLTRB(40, 20, 40, 5),
-                child:
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child:
-                  Text(
-                    'Name: ',
-                    style:
-                    TextStyle(
-                        fontSize: 20
-                    ),
-                  ),
-                )
-            ),
-            Padding(
-                padding:  const EdgeInsets.symmetric(horizontal: 20),
-                child:
-                Align(
-                    alignment: Alignment.bottomLeft,
+                const Padding(
+                    padding: EdgeInsets.fromLTRB(40, 20, 40, 5),
                     child:
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child:
-                      TextField(
-                        controller: nameController,
-                        decoration:
-                        const InputDecoration(
-                            hintText: 'Enter your Name',
-                            border: OutlineInputBorder()
+                      Text(
+                        'Name: ',
+                        style:
+                        TextStyle(
+                            fontSize: 20
                         ),
                       ),
                     )
-                )
-            ),
-            const Padding(
-                padding: EdgeInsets.fromLTRB(40, 20, 40, 5),
-                child:
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child:
-                  Text(
-                    'Email: ',
-                    style:
-                    TextStyle(
-                        fontSize: 20
-                    ),
-                  ),
-                )
-            ),
-            Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 20),
-                child:
-                Align(
-                    alignment: Alignment.bottomLeft,
+                ),
+                Padding(
+                    padding:  const EdgeInsets.symmetric(horizontal: 20),
                     child:
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    Align(
+                        alignment: Alignment.bottomLeft,
+                        child:
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child:
+                          TextField(
+                            controller: nameController,
+                            decoration:
+                            const InputDecoration(
+                                hintText: 'Enter your Name',
+                                border: OutlineInputBorder()
+                            ),
+                          ),
+                        )
+                    )
+                ),
+                const Padding(
+                    padding: EdgeInsets.fromLTRB(40, 20, 40, 5),
+                    child:
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child:
-                      TextField(
-                        controller: emailController,
-                        decoration:
-                        const InputDecoration(
-                            hintText: 'Enter an Email',
-                            border: const OutlineInputBorder()
+                      Text(
+                        'Email: ',
+                        style:
+                        TextStyle(
+                            fontSize: 20
                         ),
                       ),
                     )
-                )
-            ),
-            const Padding(
-                padding: EdgeInsets.fromLTRB(40, 20, 40, 5),
-                child:
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child:
-                  Text(
-                    'Username: ',
-                    style:
-                    TextStyle(
-                        fontSize: 20
-                    ),
-                  ),
-                )
-            ),
-            Padding(
-                padding:  const EdgeInsets.symmetric(horizontal: 20),
-                child:
-                Align(
-                    alignment: Alignment.bottomLeft,
+                ),
+                Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 20),
                     child:
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                    Align(
+                        alignment: Alignment.bottomLeft,
+                        child:
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                          child:
+                          TextField(
+                            controller: emailController,
+                            decoration:
+                            const InputDecoration(
+                                hintText: 'Enter an Email',
+                                border: const OutlineInputBorder()
+                            ),
+                          ),
+                        )
+                    )
+                ),
+                const Padding(
+                    padding: EdgeInsets.fromLTRB(40, 20, 40, 5),
+                    child:
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child:
-                      TextField(
-                        controller: usernameController,
-                        decoration:
-                        const InputDecoration(
-                            hintText: 'Enter a Username',
-                            border: OutlineInputBorder()
+                      Text(
+                        'Username: ',
+                        style:
+                        TextStyle(
+                            fontSize: 20
                         ),
                       ),
                     )
-                )
-            ),
-            const Padding(
-                padding: EdgeInsets.fromLTRB(40, 20, 40, 5),
-                child:
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child:
-                  Text(
-                    'Password: ',
-                    style:
-                    TextStyle(
-                        fontSize: 20
-                    ),
-                  ),
-                )
-            ),
-            Padding(
-                padding:  const EdgeInsets.symmetric(horizontal: 20),
-                child:
-                Align(
-                    alignment: Alignment.bottomLeft,
+                ),
+                Padding(
+                    padding:  const EdgeInsets.symmetric(horizontal: 20),
                     child:
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    Align(
+                        alignment: Alignment.bottomLeft,
+                        child:
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child:
+                          TextField(
+                            controller: usernameController,
+                            decoration:
+                            const InputDecoration(
+                                hintText: 'Enter a Username',
+                                border: OutlineInputBorder()
+                            ),
+                          ),
+                        )
+                    )
+                ),
+                const Padding(
+                    padding: EdgeInsets.fromLTRB(40, 20, 40, 5),
+                    child:
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child:
-                      TextField(
-                        controller: passwordController,
-                        decoration:
-                        const InputDecoration(
-                            hintText: 'Enter a Password',
-                            border: OutlineInputBorder()
+                      Text(
+                        'Password: ',
+                        style:
+                        TextStyle(
+                            fontSize: 20
                         ),
                       ),
                     )
-                )
-            ),
+                ),
+                Padding(
+                    padding:  const EdgeInsets.symmetric(horizontal: 20),
+                    child:
+                    Align(
+                        alignment: Alignment.bottomLeft,
+                        child:
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                          child:
+                          TextField(
+                            controller: passwordController,
+                            decoration:
+                            const InputDecoration(
+                                hintText: 'Enter a Password',
+                                border: OutlineInputBorder()
+                            ),
+                          ),
+                        )
+                    )
+                ),
 
-            Padding(
-              padding:
-                const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              child:
-              ElevatedButton(
-                  onPressed: _registerPage,
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                   child:
-                  const Text(
-                    'Register',
-                    style:
-                    TextStyle(
-                        fontSize: 20
-                    ),
-                  )
-              ),
-            )
-          ],
-        ),
+                  ElevatedButton(
+                      onPressed: _registerPage,
+                      child:
+                      const Text(
+                        'Register',
+                        style:
+                        TextStyle(
+                            fontSize: 20
+                        ),
+                      )
+                  ),
+                )
+              ],
+            ),
+          )
     );
   }
 }

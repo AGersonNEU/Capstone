@@ -1,3 +1,5 @@
+import 'package:capstone/DiagnosePage/Hear/Chirp/diagnose_hear_chirp.dart';
+import 'package:capstone/DiagnosePage/Hear/Rattle/diagnose_hear_rattle.dart';
 import 'package:capstone/DiagnosePage/Hear/Squeal/diagnose_hear_squeal.dart';
 import 'package:capstone/DiagnosePage/diagnose_answer.dart';
 import 'package:capstone/DiagnosePage/diagnose_choices_radio_groups.dart';
@@ -5,6 +7,9 @@ import 'package:capstone/DiagnosePage/diagnose_question_navigation.dart';
 import 'package:capstone/DiagnosePage/diagnosis_question.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:capstone/DiagnoseResultsPage/diagnosis_condensed_view.dart';
+
+import '../../DiagnoseResultsPage/diagnose_results_main_page.dart';
 
 class DiagnoseHearPage extends StatefulWidget {
   const DiagnoseHearPage({super.key});
@@ -23,17 +28,66 @@ class _DiagnoseHearPageState extends State<DiagnoseHearPage> {
             context,
             MaterialPageRoute(builder: (context) => const WhenDoYouHearTheSqueal()));
       case WhatDoYouHear.Knock:
-        // TODO: Handle this case.
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DiagnoseResultsPage(
+              allDiagnosis:
+                Column(
+                  children: [
+                    DiagnosisResultMini(
+                      part_name: 'Oil Pan',
+                      service: 'Oil Change',
+                      diagnose_title: 'Low Engine Oil Level',
+                    )
+                  ],
+                ),
+            ))
+        );
       case WhatDoYouHear.Tap:
-        // TODO: Handle this case.
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DiagnoseResultsPage(
+              allDiagnosis:
+              Column(
+                children: [
+                  DiagnosisResultMini(
+                    part_name: 'Oil Pan',
+                    service: 'Oil Change',
+                    diagnose_title: 'Low Engine Oil Level',
+                  )
+                ],
+              ),
+            ))
+        );
       case WhatDoYouHear.Rattle:
-        // TODO: Handle this case.
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const WhereDoYouHearTheRattle())
+        );
       case WhatDoYouHear.Chirp:
-        // TODO: Handle this case.
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const WhenDoYouHearTheChirp())
+        );
       case WhatDoYouHear.Clunk:
-        // TODO: Handle this case.
+        
       case WhatDoYouHear.Hiss:
-        // TODO: Handle this case.
+        //TODO: MISC
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const DiagnoseResultsPage(
+            allDiagnosis:
+            Column(
+              children: [
+                DiagnosisResultMini(
+                  part_name: 'Serpentine Belt',
+                  service: 'Serpentine Belt Replacement',
+                  diagnose_title: 'MISC',
+                )
+              ],
+            ),
+          ))
+      );
     }
 
 

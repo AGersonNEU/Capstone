@@ -11,6 +11,7 @@ class GlobalVariables{
   static String video_id = 'hello world';
   static int diagnose_car_id = 0;
   static String part_name = '';
+  static int diagnose_id = 1;
 
   //for sure colors///
 //b2c9d6

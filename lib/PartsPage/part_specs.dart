@@ -22,7 +22,7 @@ class _PartSpecsState extends State<PartSpecs> {
 
   Future<dynamic> _getPart() async {
     //parses link to uri link
-    String search = 'timing';
+    String search = GlobalVariables.part_name;
     String ip = GlobalVariables.ip;
     String url = "http://$ip:2031/part/$search";
     final requestLink = Uri.parse(url);
@@ -67,7 +67,7 @@ class _PartSpecsState extends State<PartSpecs> {
                             const Center(
                               child:
                                 Text(
-                                  '............................',
+                                  '........',
                                   style:
                                   TextStyle(
                                       fontSize: 20

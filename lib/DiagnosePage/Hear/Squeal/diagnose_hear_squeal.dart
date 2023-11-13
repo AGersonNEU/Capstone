@@ -1,4 +1,5 @@
 import 'package:capstone/DiagnoseResultsPage/diagnose_results_main_page.dart';
+import 'package:capstone/DiagnoseResultsPage/diagnosis_condensed_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,15 +23,114 @@ class _WhenDoYouHearTheSquealState extends State<WhenDoYouHearTheSqueal> {
       case WhenSqueal.Always:
         Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const DiagnoseResultsPage()));
+            MaterialPageRoute(builder: (context) => const DiagnoseResultsPage(
+              allDiagnosis:
+                Column(
+                  children: [
+                    DiagnosisResultMini(
+                      part_name: 'Serpentine Belt',
+                      service: 'Serpentine Belt Replacement',
+                      diagnose_title: 'Loose or Worn Drive Belt',
+                    )
+                  ],
+                ),
+            ))
+        );
       case WhenSqueal.Stopping:
-        // TODO: Handle this case.
+        ///TODO: dont pass part_name and splitting string but a list of strings
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DiagnoseResultsPage(
+              allDiagnosis:
+              Column(
+                children: [
+                  DiagnosisResultMini(
+                    part_name: 'Brake Pad',
+                    service: 'Brake Inspection',
+                    diagnose_title: 'Brake Pad Wear Indicator is Contacting Rotor',
+                  ),
+                  DiagnosisResultMini(
+                    part_name: 'Brake Pad / Brake Rotor / Brake Caliper',
+                    service: 'Front Disc Brake Repair',
+                    diagnose_title: 'Brake Pad Quality and Rotor Finish',
+                  ),
+                  DiagnosisResultMini(
+                    part_name: 'Brake Pad / Brake Rotor / Brake Caliper',
+                    service: 'Front Disc Brake Repair',
+                    diagnose_title: 'Worn Brake Pads',
+                  ),
+                ],
+              ),
+            ))
+        );
       case WhenSqueal.Starting:
-        // TODO: Handle this case.
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DiagnoseResultsPage(
+              allDiagnosis:
+              Column(
+                children: [
+                  DiagnosisResultMini(
+                    part_name: 'Serpentine Belt',
+                    service: 'Serpentine Belt Replacement',
+                    diagnose_title: 'Loose or Worn Drive Belt',
+                  )
+                ],
+              ),
+            ))
+        );
       case WhenSqueal.Turning:
-        // TODO: Handle this case.
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DiagnoseResultsPage(
+              allDiagnosis:
+              Column(
+                children: [
+                  DiagnosisResultMini(
+                    part_name: 'Serpentine Belt',
+                    service: 'Serpentine Belt Replacement',
+                    diagnose_title: 'Loose or Worn Drive Belt',
+                  ),
+                  DiagnosisResultMini(
+                    part_name: 'Power Steering Pump',
+                    service: 'Power Steering Pump Replacement',
+                    diagnose_title: 'Faulty Power Steering Pump',
+                  ),
+                  DiagnosisResultMini(
+                    part_name: 'Power Steering Pump',
+                    service: 'suspension and Steering System Repair',
+                    diagnose_title: 'Low Power Steering Fluid',
+                  ),
+                ],
+              ),
+            ))
+        );
       case WhenSqueal.Moving:
-        // TODO: Handle this case.
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DiagnoseResultsPage(
+              allDiagnosis:
+              Column(
+                children: [
+                  DiagnosisResultMini(
+                    part_name: 'Brake Pad',
+                    service: 'Brake Inspection',
+                    diagnose_title: 'Brake Pad Wear Indicator is Contacting Rotor',
+                  ),
+                  DiagnosisResultMini(
+                    part_name: 'Brake Pad / Brake Rotor / Brake Caliper',
+                    service: 'Front Disc Brake Repair',
+                    diagnose_title: 'Brake Pad Quality and Rotor Finish',
+                  ),
+                  DiagnosisResultMini(
+                    part_name: 'Brake Pad / Brake Rotor / Brake Caliper',
+                    service: 'Front Disc Brake Repair',
+                    diagnose_title: 'Worn Brake Pads',
+                  ),
+                ],
+              ),
+            ))
+        );
     }
   }
 

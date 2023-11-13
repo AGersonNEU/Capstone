@@ -54,7 +54,6 @@ class _SignInFieldState extends State<SignInField> {
       },
       body: newAccountJSON
     );
-
     return response;
   }
 
@@ -128,6 +127,7 @@ class _SignInFieldState extends State<SignInField> {
                               hintText: 'Enter a Password',
                               border: OutlineInputBorder()
                           ),
+                          obscureText: true,
                         ),
                       )
                 )

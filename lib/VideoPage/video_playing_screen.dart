@@ -1,3 +1,4 @@
+import 'package:capstone/back_button.dart';
 import 'package:capstone/global_variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,7 @@ class _VideoPlayingState extends State<VideoPlaying> {
         body:
           Column(
             children: [
+              const BackButtonCar(),
               YoutubePlayer(
                 controller: _controller,
                 showVideoProgressIndicator: true,

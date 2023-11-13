@@ -15,11 +15,17 @@ class AccountData extends StatefulWidget {
 class _AccountDataState extends State<AccountData> {
   late var _name = "";
   late var _username = "";
-  late var _car = "";
 
+  late var carId = 0;
   late var carName = "Name";
+
+  late var carIdTwo = 0;
   late var carNameTwo = "";
+
+  late var carIdThree = 0;
   late var carNameThree = "";
+
+  late var carIdFour = 0;
   late var carNameFour = "";
 
 
@@ -39,22 +45,17 @@ class _AccountDataState extends State<AccountData> {
     var carThree = accountCars[2];
     var carFour = accountCars[3];
 
+    carName = carOne['name'].toString();
+    carId = carOne['id'] as int;
 
-      carName = carOne['name'].toString();
+    carNameTwo = carTwo['name'].toString();
+    carIdTwo = carTwo['id'] as int;
 
+    carNameThree = carThree['name'].toString();
+    carIdThree = carThree['id'] as int;
 
-    if(carTwo != null){
-      carNameTwo = carTwo['name'].toString();
-    }
-
-    if(carThree != null){
-      carNameThree = carThree['name'].toString();
-    }
-
-    if(carFour != null){
-      carNameFour = carFour['name'].toString();
-    }
-
+    carNameFour = carFour['name'].toString();
+    carIdFour = carFour['id'] as int;
 
     return response;
   }
@@ -81,162 +82,202 @@ class _AccountDataState extends State<AccountData> {
       child:
         Column(
           children: [
-            // Text(
-            //   GlobalVariables.account_id.toString()
-            // ),
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                child:
-                FutureBuilder(
-                    future: _getUsersName(),
-                    builder: (context, snapshot){
-                      if(snapshot.hasError){
-                        return Text(
-                            'Error: ${snapshot.error}'
-                        );
-                      }else{
-                        if(_car == ""){
-                          return
-                            FutureBuilder(
-                                future: _getUsersCars(),
-                                builder: (context, snapshot){
-                                  if(snapshot.hasError){
-                                    return const Text('oopsies');
-                                  }else{
-                                    return Column(
-                                      children: [
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child:
+                      FutureBuilder(
+                          future: _getUsersName(),
+                          builder: (context, snapshot){
+                            if(snapshot.hasError){
+                              return const Text('oopsies');
+                            }else{
+                              return Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 20),
+                                    child:
+                                    Container(
+                                        decoration:
+                                        BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20),
+                                          color: const Color(0xFFEFF4F7),
+                                        ),
+                                        child:
                                         Padding(
-                                          padding: EdgeInsets.symmetric(vertical: 20),
+                                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                                           child:
-                                          Container(
-                                              decoration:
-                                              BoxDecoration(
-                                                borderRadius: BorderRadius.circular(20),
-                                                color: const Color(0xFFEFF4F7),
-                                              ),
-                                              child:
-                                              Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                                child:
-                                                Column(
-                                                    children:
-                                                    [
-                                                      Text(
-                                                        _name.toString() ?? 'name not found',
-                                                        style:
-                                                        const TextStyle(
-                                                            fontSize: 50
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        _username.toString() ?? 'username not found',
-                                                        style:
-                                                        const TextStyle(
-                                                            fontSize: 20,
-                                                            fontStyle: FontStyle.italic
-                                                        ),
-                                                      ),
-                                                    ]
+                                          Column(
+                                              children:
+                                              [
+                                                Text(
+                                                  _name.toString() ?? 'name not found',
+                                                  style:
+                                                  const TextStyle(
+                                                      fontSize: 50
+                                                  ),
                                                 ),
-                                              )
+                                                Text(
+                                                  _username.toString() ?? 'username not found',
+                                                  style:
+                                                  const TextStyle(
+                                                      fontSize: 20,
+                                                      fontStyle: FontStyle.italic
+                                                  ),
+                                                ),
+                                              ]
                                           ),
-                                        ),
-                                        FutureBuilder(
-                                            future: _getUsersCars(),
-                                            builder: (context, snapshot){
-                                              if(snapshot.hasError){
-                                                return const Text('oopsies');
-                                              }else{
-                                                return
-                                                  Column(
-                                                    children: [
-                                                      Padding(
-                                                          padding: const EdgeInsets.symmetric(vertical: 10),
-                                                          child:
-                                                          Container(
-                                                              decoration:
-                                                              BoxDecoration(
-                                                                borderRadius: BorderRadius.circular(20),
-                                                                color: const Color(0xFFEFF4F7),
-                                                              ),
-                                                              child:
-                                                              Padding(
-                                                                  padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 15),
-                                                                  child:
-                                                                  AccountCarInfo(car: carName)
-                                                              )
-                                                          )
-                                                      )
-                                                    ],
-                                                  );
-                                              }
-                                            }
-                                        ),
-                                      ],
-                                    );
-                                  }
-                                }
-                            );
-                        }else{
-                          return
-                            Column(
-                              children: [
-                                Container(
-                                    decoration:
-                                    BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: const Color(0xFFEFF4F7),
-                                    ),
-                                    child:
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                      child:
-                                      Column(
-                                          children:
-                                          [
-                                            Text(
-                                              _name.toString() ?? 'name not found',
-                                              style:
-                                              const TextStyle(
-                                                  fontSize: 50
-                                              ),
-                                            ),
-                                            Text(
-                                              _username.toString() ?? 'username not found',
-                                              style:
-                                              const TextStyle(
-                                                  fontSize: 20,
-                                                  fontStyle: FontStyle.italic
-                                              ),
-                                            ),
-                                          ]
-                                      ),
-                                    )
-                                ),
-                                Container(
-                                    decoration:
-                                    BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: const Color(0xFFEFF4F7),
-                                    ),
-                                    child:
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                      child:
-                                        AccountCarInfo(
-                                          car: carName,
                                         )
-                                    )
-                                )
-                              ],
-                            );
-                        }
-                      }
-                    }
-                )
-            )
-          ],
-        ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }
+                          }
+                      )
+              ),
+            FutureBuilder(
+                future: _getUsersCars(),
+                builder: (context, snapshot){
+                  if(snapshot.hasError){
+                    return const Text('oopsies');
+                  }else{
+                    return Column(
+                      children: [
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                              child: Container(
+                                  decoration:
+                                  BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: const Color(0xFFEFF4F7),
+                                  ),
+                                  child:
+                                  FutureBuilder(
+                                      future: _getUsersName(),
+                                      builder: (context, snapshot){
+                                        if(snapshot.hasError){
+                                          return const Text('oopsies');
+                                        }else{
+                                          return Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                              child:
+                                              AccountCarInfo(
+                                                  carId: carId,
+                                                  carName: carName
+                                              )
+                                          );
+                                        }
+                                      }
+                                  )
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                              child: Container(
+                                  decoration:
+                                  BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: const Color(0xFFEFF4F7),
+                                  ),
+                                  child:
+                                  FutureBuilder(
+                                      future: _getUsersName(),
+                                      builder: (context, snapshot){
+                                        if(snapshot.hasError){
+                                          return const Text('oopsies');
+                                        }else{
+                                          return Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                              child:
+                                              AccountCarInfo(
+                                                  carId: carIdTwo,
+                                                  carName: carNameTwo
+                                              )
+                                          );
+                                        }
+                                      }
+                                  )
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                              child: Container(
+                                  decoration:
+                                  BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: const Color(0xFFEFF4F7),
+                                  ),
+                                  child:
+                                  FutureBuilder(
+                                      future: _getUsersName(),
+                                      builder: (context, snapshot){
+                                        if(snapshot.hasError){
+                                          return const Text('oopsies');
+                                        }else{
+                                          return Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                              child:
+                                              AccountCarInfo(
+                                                  carId: carIdThree,
+                                                  carName: carNameThree
+                                              )
+                                          );
+                                        }
+                                      }
+                                  )
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                              child: Container(
+                                  decoration:
+                                  BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: const Color(0xFFEFF4F7),
+                                  ),
+                                  child:
+                                  FutureBuilder(
+                                      future: _getUsersName(),
+                                      builder: (context, snapshot){
+                                        if(snapshot.hasError){
+                                          return const Text('oopsies');
+                                        }else{
+                                          return Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                              child:
+                                              AccountCarInfo(
+                                                  carId: carIdFour,
+                                                  carName: carNameFour
+                                              )
+                                          );
+                                        }
+                                      }
+                                  )
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  }
+                }
+            ),
+           ]
+        )
     );
   }
 }

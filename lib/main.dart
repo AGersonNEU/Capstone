@@ -17,6 +17,7 @@ class MyHomePage extends StatefulWidget {
 
 class _CarHomePage extends State<MyHomePage>{
   final PageController pageController = PageController(initialPage: 0);
+  late var _carDiagnosis = 'oil';
 
   late var _carNameOne = "Car Name";
   late var _carDescriptionOne = "Make Model Year";
@@ -34,7 +35,7 @@ class _CarHomePage extends State<MyHomePage>{
   late var _carDescriptionFour = "Make Model Year";
   late var _carImageFour = "";
 
-  late var _carId = 0;
+  late var _carId = 1;
 
   Future<dynamic> _getCar () async {
     //parses link to uri link
@@ -48,6 +49,11 @@ class _CarHomePage extends State<MyHomePage>{
     List accountCars = jsonDecode(response.body);
 
     //List<dynamic> accountCars = jsonDecode(response.body);
+    // int index = 0;
+    // for(dynamic car in accountCars){
+    //   var car = accountCars[index];
+    //   index++;
+    // }
     var car = accountCars[0];
     var car2 = accountCars[1];
     var car3 = accountCars[2];
@@ -74,6 +80,26 @@ class _CarHomePage extends State<MyHomePage>{
       _carImageFour = car4['image'].toString();
     }
 
+    return response;
+  }
+
+  Future<dynamic> _getCarDiagnosis() async{
+    _carDiagnosis = '';
+    int carId = GlobalVariables.car_id;
+    String ip = GlobalVariables.ip;
+    String url = "http://$ip:2026/diagnose/all/$carId";
+    final requestLink = Uri.parse(url);
+
+    //makes the request and returns the body
+    Response response = await get(requestLink);
+    List carDiagnosis = jsonDecode(response.body);
+
+    //List<dynamic> accountCars = jsonDecode(response.body);
+    int diagIndex = 0;
+    for(dynamic diagnosis in carDiagnosis){
+      _carDiagnosis ='$_carDiagnosis \n ${diagnosis['fix']}';
+      diagIndex = diagIndex + 1;
+    }
 
     return response;
   }
@@ -87,7 +113,6 @@ class _CarHomePage extends State<MyHomePage>{
 
   _diagnoseCar(){
     GlobalVariables.diagnose_car_id = _carId;
-
     Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const DiagnosePage())
@@ -102,105 +127,127 @@ class _CarHomePage extends State<MyHomePage>{
           PageView(
             controller: pageController,
             children: [
-              Column(
-                  children:
-                  [
-                    FutureBuilder(
-                        future: _getCar(),
-                        builder: (context, snapshot){
-                          if(snapshot.hasError){
-                            return Text(
-                                'Error: ${snapshot.error}'
-                            );
-                          }else{
-                            return
-                              Column(
-                                children: [
-                                  Center(
-                                    child:
-                                    Padding(
-                                        padding: const EdgeInsets.fromLTRB(100, 70, 5, 20),
+              SingleChildScrollView(
+                child:
+                  Column(
+                    children:
+                    [
+                      FutureBuilder(
+                          future: _getCar(),
+                          builder: (context, snapshot){
+                            if(snapshot.hasError){
+                              return Text(
+                                  'Error: ${snapshot.error}'
+                              );
+                            }else{
+                              return
+                                Column(
+                                  children: [
+                                    Center(
                                         child:
-                                              Row(
-                                                children: [
-                                                    Text(
-                                                      _carNameOne.toString() ?? '',
-                                                      style:
-                                                      const TextStyle(
-                                                        fontSize: 50,
-                                                      ),
-                                                    ),
-                                                  IconButton(
-                                                      onPressed: _createNewCar,
-                                                      icon:
-                                                      const Icon(
-                                                        Icons.edit,
-                                                        size: 40,
-                                                        color:
-                                                        Color(0xFFD9E4EB),
-                                                      )
+                                        Padding(
+                                            padding: const EdgeInsets.fromLTRB(100, 70, 5, 20),
+                                            child:
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  _carNameOne.toString() ?? '',
+                                                  style:
+                                                  const TextStyle(
+                                                    fontSize: 50,
                                                   ),
-                                                ],
-                                              )
-                                    )
-                                  ),
-                                  Center(
-                                    child:
-                                    Padding(
-                                        padding: const EdgeInsets.fromLTRB(50,5,50, 30),
-                                        child:
-                                        Image.network(_carImageOne)
-                                    ),
-                                  ),
-                                  Center(
-                                    child:
-                                    Padding(
-                                        padding: const EdgeInsets.all(20),
-                                        child:
-                                        Text(
-                                          _carDescriptionOne.toString() ?? '',
-                                          style: const TextStyle(
-                                              fontSize: 20
-                                          ),
+                                                ),
+                                                IconButton(
+                                                    onPressed: _createNewCar,
+                                                    icon:
+                                                    const Icon(
+                                                      Icons.edit,
+                                                      size: 40,
+                                                      color:
+                                                      Color(0xFFD9E4EB),
+                                                    )
+                                                ),
+                                              ],
+                                            )
                                         )
                                     ),
-                                  ),
-                                ],
-                              );
+                                    Center(
+                                      child:
+                                      Padding(
+                                          padding: const EdgeInsets.fromLTRB(50,5,50, 30),
+                                          child:
+                                          Image.network(_carImageOne)
+                                      ),
+                                    ),
+                                    Center(
+                                      child:
+                                      Padding(
+                                          padding: const EdgeInsets.all(20),
+                                          child:
+                                          Text(
+                                            _carDescriptionOne.toString() ?? '',
+                                            style: const TextStyle(
+                                                fontSize: 20
+                                            ),
+                                          )
+                                      ),
+                                    ),
+                                  ],
+                                );
+                            }
                           }
-                        }
-                    ),
-
-                    const Center(
-                      child:
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(50,5,50, 10),
+                      ),
+                      const Center(
                         child:
-                        Text(
-                          "Problems With Car",
-                          style: TextStyle(
-                              fontSize: 20
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(50,5,50, 10),
+                          child:
+                          Text(
+                            "Problems With Car",
+                            style: TextStyle(
+                                fontSize: 20
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      child:
-                      TextButton(
-                          onPressed: _diagnoseCar,
-                          child:
-                          const Text(
-                            'Diagnose Car',
-                            style:
-                            TextStyle(
-                                fontSize: 20,
-                                color: Color(0xFF7c93a1)
-                            ),
-                          )
+                      FutureBuilder(
+                          future: _getCarDiagnosis(),
+                          builder: (context, snapshot){
+                            if(snapshot.hasError){
+                              return const Text('oopsies');
+                            }else{
+                              return
+                                Center(
+                                  child:
+                                    Text(
+                                      _carDiagnosis.toString() ?? '',
+                                      style:
+                                      const TextStyle(
+                                        fontSize: 25,
+                                      ),
+                                    )
+                                );
+                            }
+                          }
                       ),
-                    ),
-                  ]
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        child:
+                        TextButton(
+                            onPressed: _diagnoseCar,
+                            child:
+                            const Text(
+                              'Diagnose Car',
+                              style:
+                              TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xFF7c93a1)
+                              ),
+                            )
+                        ),
+                      ),
+                    ]
+                ),
               ),
               Column(
                   children:
@@ -271,19 +318,6 @@ class _CarHomePage extends State<MyHomePage>{
                         }
                     ),
 
-                    const Center(
-                      child:
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(50,5,50, 30),
-                        child:
-                        Text(
-                          "Problems With Car",
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
-                      ),
-                    ),
                   ]
               ),
               Column(
@@ -355,19 +389,6 @@ class _CarHomePage extends State<MyHomePage>{
                         }
                     ),
 
-                    const Center(
-                      child:
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(50,5,50, 30),
-                        child:
-                        Text(
-                          "Problems With Car",
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
-                      ),
-                    ),
                   ]
               ),
               Column(
@@ -481,7 +502,6 @@ class _CarHomePage extends State<MyHomePage>{
           HomeBottomNav()
       ),
     );
-
 
 
   }

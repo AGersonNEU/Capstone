@@ -7,39 +7,46 @@ import '../VideoPage/video_main_page.dart';
 import '../global_variables.dart';
 
 class DiagnosisInformation extends StatefulWidget {
-  const DiagnosisInformation({super.key});
+  final String diagnoseTitle;
+  final String info;
+  const DiagnosisInformation({super.key, required this.info, required this.diagnoseTitle});
 
   @override
-  State<DiagnosisInformation> createState() => _DiagnosisInformationState();
+  State<DiagnosisInformation> createState() => _DiagnosisInformationState(info, diagnoseTitle);
 }
 
 class _DiagnosisInformationState extends State<DiagnosisInformation> {
+  late String diagnosis_info;
+  late String diagnosis_title;
 
-
+  _DiagnosisInformationState(String info, String diagnoseTitle){
+    diagnosis_info = info;
+    diagnosis_title = diagnoseTitle;
+  }
 
   //save this diagnosis to database
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body:
         SingleChildScrollView(
         child: Column(
           children: [
             Row(
               children: [
-                BackButtonCar(),
+                const BackButtonCar(),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(40, 40, 10, 10),
+                  padding: const EdgeInsets.fromLTRB(40, 40, 10, 10),
                   child:
                      Center(
                        child:
                         Text(
-                         'Loose or Worn \n Drive Belt',
+                         diagnosis_title.toString() ?? '',
                          softWrap: true,
                          overflow: TextOverflow.visible,
                          maxLines: 2,
                          style:
-                         TextStyle(
+                         const TextStyle(
                            fontSize: 30,
                            fontWeight: FontWeight.bold,
 
@@ -50,21 +57,12 @@ class _DiagnosisInformationState extends State<DiagnosisInformation> {
               ],
             ),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child:
                 Text(
-                  'As the timing belt synchronizes engine processes, the serpentine belt powers '
-                      'peripheral processes in the engine compartment, like the power steering pump, '
-                      'water pump, cooling fan, air conditioner, and alternator. The serpentine belt receives '
-                      'its name from the snake-like path it takes through the various steering and electrical '
-                      'components it powers. Belt tension also plays an important role in serpentine belt maintenance. '
-                      'A properly tensioned belt helps promote long belt life while ensuring that all components are not overloaded '
-                      'or strained during operation. Serpentine belts are tough, built to sustain years of continued and heavy use, '
-                      'but they do have a natural life projected by every manufacturer. Periodic inspections of your serpentine belt '
-                      'will help prevent breakdowns, though replacing your serpentine belt is a natural part of overall car maintenance. '
-                      'If you suspect trouble with your serpentine belt, please give us a call or contact us for assistance.',
+                  diagnosis_info,
                   style:
-                  TextStyle(
+                  const TextStyle(
                       fontSize: 20
                   ),
                 ),

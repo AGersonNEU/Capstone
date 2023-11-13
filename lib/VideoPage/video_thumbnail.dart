@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-
 import 'package:capstone/VideoPage/video_playing_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
 import '../global_variables.dart';
 
 
@@ -29,6 +27,7 @@ class _VideoThumbnailState extends State<VideoThumbnail> {
   late var _videoDescription = "";
   late var _videoThumbnail = "";
   late int videoIndex = 1;
+  late var _videoId = GlobalVariables.video_id;
 
   _VideoThumbnailState(int videoId){
     videoIndex = videoId;
@@ -48,7 +47,7 @@ Future<dynamic> _findVideoId() async{
 
     _videoTitle = jsonBody['videoTitle'].toString();
     _videoDescription = jsonBody['videoDesc'].toString();
-    GlobalVariables.video_id = jsonBody['videoId'].toString();
+    _videoId = jsonBody['videoId'].toString();
     _videoThumbnail = jsonBody['videoThumbnail'].toString();
 
     if(_videoThumbnail == 'null'){
@@ -84,6 +83,8 @@ Future<dynamic> _findVideoId() async{
   }
 
   void _videoPlayingScreen() {
+    GlobalVariables.video_index = videoIndex;
+    GlobalVariables.video_id = _videoId;
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const VideoPlaying()));
   }
