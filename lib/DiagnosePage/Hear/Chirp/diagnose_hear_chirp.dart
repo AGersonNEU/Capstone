@@ -31,6 +31,21 @@ class _WhenDoYouHearTheChirpState extends State<WhenDoYouHearTheChirp> {
                     part_name: 'Serpentine Belt',
                     service: 'Serpentine Belt Replacement',
                     diagnose_title: 'Loose or Worn Drive Belt',
+                    diagnose_info: 'As the timing belt synchronizes engine processes, '
+                        'the serpentine belt powers peripheral processes in the engine '
+                        'compartment, like the power steering pump, water pump, cooling '
+                        'fan, air conditioner, and alternator. The serpentine belt receives '
+                        'its name from the snake-like path it takes through the various '
+                        'steering and electrical components it powers. Belt tension also '
+                        'plays an important role in serpentine belt maintenance. A properly '
+                        'tensioned belt helps promote long belt life while ensuring that all '
+                        'components are not overloaded or strained during operation. Serpentine '
+                        'belts are tough, built to sustain years of continued and heavy use, '
+                        'but they do have a natural life projected by every manufacturer. '
+                        'Periodic inspections of your serpentine belt will help prevent breakdowns, '
+                        'though replacing your serpentine belt is a natural part of overall car '
+                        'maintenance. If you suspect trouble with your serpentine belt, '
+                        'please give us a call or contact us for assistance.',
                   )
                 ],
               ),
@@ -47,6 +62,21 @@ class _WhenDoYouHearTheChirpState extends State<WhenDoYouHearTheChirp> {
                     part_name: 'Serpentine Belt',
                     service: 'Serpentine Belt Replacement',
                     diagnose_title: 'Loose or Worn Drive Belt',
+                    diagnose_info: 'As the timing belt synchronizes engine processes, '
+                        'the serpentine belt powers peripheral processes in the engine '
+                        'compartment, like the power steering pump, water pump, cooling '
+                        'fan, air conditioner, and alternator. The serpentine belt receives '
+                        'its name from the snake-like path it takes through the various '
+                        'steering and electrical components it powers. Belt tension also '
+                        'plays an important role in serpentine belt maintenance. A properly '
+                        'tensioned belt helps promote long belt life while ensuring that all '
+                        'components are not overloaded or strained during operation. Serpentine '
+                        'belts are tough, built to sustain years of continued and heavy use, '
+                        'but they do have a natural life projected by every manufacturer. '
+                        'Periodic inspections of your serpentine belt will help prevent breakdowns, '
+                        'though replacing your serpentine belt is a natural part of overall car '
+                        'maintenance. If you suspect trouble with your serpentine belt, '
+                        'please give us a call or contact us for assistance.',
                   )
                 ],
               ),
@@ -63,16 +93,44 @@ class _WhenDoYouHearTheChirpState extends State<WhenDoYouHearTheChirp> {
                     part_name: 'Brake Pad',
                     service: 'Brake Inspection',
                     diagnose_title: 'Brake Pad Wear Indicator is Contacting Rotor',
+                    diagnose_info: 'Brakes use friction to bring a vehicle to a complete stop. This friction creates a substantial '
+                        'amount of heat that can degrade the brakes and brake components over time. As a result, inspecting these '
+                        'components and ensuring proper operation has become a critical part of overall vehicle maintenance. Although '
+                        'brake systems vary from vehicle to vehicle, the responsibility and importance of the components remains the '
+                        'same. Today, some common brake types include drum and disc brakes. Drum brakes contain brake shoes, drums, '
+                        'wheel cylinders, springs, and self-adjusters. Disc brakes contain brake pads, rotors, calipers, and hydraulic '
+                        'components. Depending on the design of the rear brake system, the parking brake assembly, which keeps the vehicle '
+                        'from rolling once stopped, can be housed in either a drum or rotor. All of these components, including the '
+                        'brake pedal and brake fluid, should be checked during a brake inspection service to help ensure that a vehicle '
+                        'is safe to operate.',
                   ),
                   DiagnosisResultMini(
                     part_name: 'Brake Pad / Brake Rotor / Brake Caliper',
                     service: 'Front Disc Brake Repair',
                     diagnose_title: 'Brake Pad Quality and Rotor Finish',
+                    diagnose_info: 'In the brake systems of modern vehicles, disc brakes are used in both the front and rear of the vehicle. '
+                        'Front disc brake systems contain brake pads, calipers, rotors, and hydraulic components. In a disc brake system, '
+                        'the rotor is mounted to the wheel hub, and calipers are responsible for squeezing the brake pads against the disc '
+                        'in order to slow the speed of the turning rotor and bring the vehicle to a complete stop. Because front disc brake '
+                        'systems convert kinetic energy into heat, ventilation slots, holes, or vanes are necessary for expelling heat from '
+                        'the brake system. While the brake pads are already designed to withstand heat, excessive amounts of heat are still '
+                        'damaging to the pads as well as other disc brake components. Brake systems that use disc brakes are known to possess '
+                        'strong stopping power. Like all brake systems, however, disc brakes will wear over time. This is why routine maintenance '
+                        'is extremely important.',
                   ),
                   DiagnosisResultMini(
                     part_name: 'Brake Pad / Brake Rotor / Brake Caliper',
                     service: 'Front Disc Brake Repair',
                     diagnose_title: 'Worn Brake Pads',
+                    diagnose_info: 'In the brake systems of modern vehicles, disc brakes are used in both the front and rear of the vehicle. '
+                        'Front disc brake systems contain brake pads, calipers, rotors, and hydraulic components. In a disc brake system, the '
+                        'rotor is mounted to the wheel hub, and calipers are responsible for squeezing the brake pads against the disc in order '
+                        'to slow the speed of the turning rotor and bring the vehicle to a complete stop. Because front disc brake systems '
+                        'convert kinetic energy into heat, ventilation slots, holes, or vanes are necessary for expelling heat from the brake '
+                        'system. While the brake pads are already designed to withstand heat, excessive amounts of heat are still damaging to '
+                        'the pads as well as other disc brake components. Brake systems that use disc brakes are known to possess strong '
+                        'stopping power. Like all brake systems, however, disc brakes will wear over time. This is why routine maintenance '
+                        'is extremely important.',
                   ),
                 ],
               ),

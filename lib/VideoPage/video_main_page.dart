@@ -24,7 +24,6 @@ class _VideoPageState extends State<VideoPage> {
               child:
                 Column(
                   children: [
-
                     Center(
                         child:
                         Padding(

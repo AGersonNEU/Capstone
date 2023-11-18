@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:capstone/PartsPage/part_specs.dart';
+import 'package:capstone/back_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -35,18 +36,27 @@ class _PartsPageState extends State<PartsPage> {
               Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
+                    padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
                     child:
-                    Center(
-                      child:
-                      Text(
-                        'Parts For Fix',
-                        style:
-                        TextStyle(
-                            fontSize: 50
-                        ),
-                      ),
-                    ),
+                        Row(
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child:
+                              BackButtonCar(),
+                            ),
+                            Center(
+                              child:
+                              Text(
+                                'Parts For Fix',
+                                style:
+                                TextStyle(
+                                    fontSize: 50
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 50),

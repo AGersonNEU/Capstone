@@ -8,8 +8,7 @@ import '../global_variables.dart';
 class AccountCarInfo extends StatefulWidget {
   final int carId;
   final String carName;
-
-
+  
   const AccountCarInfo({
     super.key,
     required this.carId,
@@ -41,11 +40,14 @@ class _AccountCarInfoState extends State<AccountCarInfo> {
     Response response = await get(requestLink);
     List carDiagnosis = jsonDecode(response.body);
 
-    //List<dynamic> accountCars = jsonDecode(response.body);
     int diagIndex = 0;
     for(dynamic diagnosis in carDiagnosis){
       car_diagnosis ='$car_diagnosis \n ${diagnosis['fix']}';
       diagIndex = diagIndex + 1;
+    }
+
+    if(diagIndex == 0){
+      car_diagnosis = '   No Diagnosis Yet';
     }
 
     return response;
@@ -58,45 +60,53 @@ class _AccountCarInfoState extends State<AccountCarInfo> {
       children:[
         Center(
           child:
-          Text(
-            car_name,
-            style:
-            const TextStyle(
-                fontSize: 15
-            ),
-          ),
-        ),
-        Center(
-          child:
               Column(
                 children: [
                   FutureBuilder(
                       future: _getCarDiagnosis(),
-                      builder: (context, snapshot){
-                        if(snapshot.hasError){
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
                           return const Text('oopsies');
-                        }else{
-                          return Row(
-                            children: [
-                              const Center(
-                                child:
-                                Text(
-                                  'Diagnosis: ',
-                                  style:
-                                  TextStyle(
-                                      fontSize: 15
+                        } else
+                          if (snapshot.hasData) {
+                          return
+                            Column(
+                              children: [
+                                Center(
+                                  child:
+                                  Text(
+                                    car_name,
+                                    style:
+                                    const TextStyle(
+                                        fontSize: 15
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Text(
-                                car_diagnosis ?? '',
-                                style:
-                                const TextStyle(
-                                    fontSize: 15
-                                ),
-                              ),
-                            ],
-                          );
+                                Row(
+                                  children: [
+                                    const Center(
+                                      child:
+                                      Text(
+                                        'Diagnosis: ',
+                                        style:
+                                        TextStyle(
+                                            fontSize: 15
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      car_diagnosis ?? '',
+                                      style:
+                                      const TextStyle(
+                                          fontSize: 15
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            );
+                        } else {
+                          return const Text('waiting');
                         }
                       }
                   )

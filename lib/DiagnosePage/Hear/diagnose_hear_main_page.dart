@@ -1,4 +1,5 @@
 import 'package:capstone/DiagnosePage/Hear/Chirp/diagnose_hear_chirp.dart';
+import 'package:capstone/DiagnosePage/Hear/Clunk/diagnose_hear_clunk.dart';
 import 'package:capstone/DiagnosePage/Hear/Rattle/diagnose_hear_rattle.dart';
 import 'package:capstone/DiagnosePage/Hear/Squeal/diagnose_hear_squeal.dart';
 import 'package:capstone/DiagnosePage/diagnose_answer.dart';
@@ -38,6 +39,17 @@ class _DiagnoseHearPageState extends State<DiagnoseHearPage> {
                       part_name: 'Oil Pan',
                       service: 'Oil Change',
                       diagnose_title: 'Low Engine Oil Level',
+                      diagnose_info: 'Motor oil and lube changes are very important for keeping your '
+                          'engine functioning properly. Motor oil keeps your engine lubricated so there '
+                          'isn’t any excess friction or wear on moving parts. Oil cools down your engine, '
+                          'fights rust and corrosion, reduces engine noise, and works with the oil filter '
+                          'to remove contaminants from the engine. Oil is very important to your engine for '
+                          'helping it operate at optimum performance levels. When you drive your car, your '
+                          'engine becomes very hot, and heat makes oil break down. Broken down oil doesn’t '
+                          'move through your engine as well, which means the oil cannot do its job. Oil also '
+                          'cleans your engine as it flows around it. Dirty oil moves more slowly than clean oil '
+                          'and is not able to lubricate your engine correctly. In addition, the gritty particles '
+                          'in dirty oil can hinder its friction reduction abilities and increase wear on moving parts.',
                     )
                   ],
                 ),
@@ -54,6 +66,17 @@ class _DiagnoseHearPageState extends State<DiagnoseHearPage> {
                     part_name: 'Oil Pan',
                     service: 'Oil Change',
                     diagnose_title: 'Low Engine Oil Level',
+                    diagnose_info: 'Motor oil and lube changes are very important for keeping your '
+                        'engine functioning properly. Motor oil keeps your engine lubricated so there '
+                        'isn’t any excess friction or wear on moving parts. Oil cools down your engine, '
+                        'fights rust and corrosion, reduces engine noise, and works with the oil filter '
+                        'to remove contaminants from the engine. Oil is very important to your engine for '
+                        'helping it operate at optimum performance levels. When you drive your car, your '
+                        'engine becomes very hot, and heat makes oil break down. Broken down oil doesn’t '
+                        'move through your engine as well, which means the oil cannot do its job. Oil also '
+                        'cleans your engine as it flows around it. Dirty oil moves more slowly than clean oil '
+                        'and is not able to lubricate your engine correctly. In addition, the gritty particles '
+                        'in dirty oil can hinder its friction reduction abilities and increase wear on moving parts.',
                   )
                 ],
               ),
@@ -70,7 +93,10 @@ class _DiagnoseHearPageState extends State<DiagnoseHearPage> {
             MaterialPageRoute(builder: (context) => const WhenDoYouHearTheChirp())
         );
       case WhatDoYouHear.Clunk:
-        
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const WhenDoYouHearTheClunk())
+        );
       case WhatDoYouHear.Hiss:
         //TODO: MISC
         Navigator.push(
@@ -83,6 +109,8 @@ class _DiagnoseHearPageState extends State<DiagnoseHearPage> {
                   part_name: 'Serpentine Belt',
                   service: 'Serpentine Belt Replacement',
                   diagnose_title: 'MISC',
+                  diagnose_info: '',
+
                 )
               ],
             ),

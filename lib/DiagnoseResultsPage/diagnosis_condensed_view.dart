@@ -13,26 +13,31 @@ class DiagnosisResultMini extends StatefulWidget {
   final String part_name;
   final String service;
   final String diagnose_title;
+  final String diagnose_info;
+
   const DiagnosisResultMini({
     super.key,
     required this.part_name,
     required this.service,
-    required this.diagnose_title
+    required this.diagnose_title,
+    required this.diagnose_info
   });
 
   @override
-  State<DiagnosisResultMini> createState() => _DiagnosisResultMiniState(part_name, service, diagnose_title);
+  State<DiagnosisResultMini> createState() => _DiagnosisResultMiniState(part_name, service, diagnose_title, diagnose_info);
 }
 
 class _DiagnosisResultMiniState extends State<DiagnosisResultMini> {
   late String partName;
   late String remedy;
   late String diagnosisTitle;
+  late String diagnosisInformation;
 
-  _DiagnosisResultMiniState(String part_name, String service, String diagnose_title){
+  _DiagnosisResultMiniState(String part_name, String service, String diagnose_title, String diagnose_info){
     partName = part_name;
     remedy = service;
     diagnosisTitle = diagnose_title;
+    diagnosisInformation = diagnose_info;
   }
 
   //TODO:save the diagnosis call
@@ -50,7 +55,7 @@ class _DiagnosisResultMiniState extends State<DiagnosisResultMini> {
     var newDiagnosisJSON = jsonEncode(newDiagnosis);
 
     String ip = GlobalVariables.ip;
-    int car_id = GlobalVariables.car_id;
+    int car_id = GlobalVariables.diagnose_car_id;
     String url = "http://$ip:2026/diagnose/$car_id";
     final requestLink = Uri.parse(url);
 
@@ -83,10 +88,8 @@ class _DiagnosisResultMiniState extends State<DiagnosisResultMini> {
       int id = jsonBody['id'] as int;
       GlobalVariables.diagnose_id = id;
     });
-
     //TODO: make a video call first and then add that video call to the db
-
-    GlobalVariables.video_search = '2008 PT cruiser $remedy';
+    GlobalVariables.video_search =  remedy;
     Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const VideoPage())
@@ -96,9 +99,9 @@ class _DiagnosisResultMiniState extends State<DiagnosisResultMini> {
   void _diagnoseInfo(){
     Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const DiagnosisInformation(
-          diagnoseTitle: 'Oil Change',
-          info: 'An oil change is when you change your oil',
+        MaterialPageRoute(builder: (context) => DiagnosisInformation(
+          diagnoseTitle: diagnosisTitle,
+          info: diagnosisInformation,
         ))
     );
   }

@@ -2,6 +2,7 @@ import 'package:capstone/AccountPage/account_main_page.dart';
 import 'package:capstone/DiagnosePage/diagnose_main_page.dart';
 import 'package:capstone/LogInPage/login_main_page.dart';
 import 'package:capstone/VideoPage/video_main_page.dart';
+import 'package:capstone/global_variables.dart';
 import 'package:capstone/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class _HomeBottomNavState extends State<HomeBottomNav> with TickerProviderStateM
   }
 
   void _diagnosePageButton(){
+    GlobalVariables.diagnose_car_id = 0;
     Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const DiagnosePage())

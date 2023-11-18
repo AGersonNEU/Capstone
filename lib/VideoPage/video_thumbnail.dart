@@ -95,7 +95,9 @@ Future<dynamic> _findVideoId() async{
       FutureBuilder(
           future: _findVideoId(),
           builder: (context, snapshot){
-            if(snapshot.hasError){
+            if(snapshot.connectionState == ConnectionState.waiting){
+              return const CircularProgressIndicator();
+            }else if(snapshot.hasError){
               return Text(
                 'No videos found Error: ${snapshot.error}'
               );

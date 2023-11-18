@@ -140,37 +140,29 @@ class _AccountDataState extends State<AccountData> {
                 builder: (context, snapshot){
                   if(snapshot.hasError){
                     return const Text('oopsies');
-                  }else{
+                  }else
+                  if(snapshot.hasData){
                     return Column(
                       children: [
                         Column(
                           children: [
                             Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                              child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                                child: Container(
                                   decoration:
                                   BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: const Color(0xFFEFF4F7),
                                   ),
                                   child:
-                                  FutureBuilder(
-                                      future: _getUsersName(),
-                                      builder: (context, snapshot){
-                                        if(snapshot.hasError){
-                                          return const Text('oopsies');
-                                        }else{
-                                          return Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                              child:
-                                              AccountCarInfo(
-                                                  carId: carId,
-                                                  carName: carName
-                                              )
-                                          );
-                                        }
-                                      }
-                                  )
+                                Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                    child:
+                                      AccountCarInfo(
+                                          carId: carId,
+                                          carName: carName
+                                      )
+                                )
                               ),
                             ),
                           ],
@@ -179,30 +171,21 @@ class _AccountDataState extends State<AccountData> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                              child: Container(
+                                child: Container(
                                   decoration:
                                   BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: const Color(0xFFEFF4F7),
                                   ),
                                   child:
-                                  FutureBuilder(
-                                      future: _getUsersName(),
-                                      builder: (context, snapshot){
-                                        if(snapshot.hasError){
-                                          return const Text('oopsies');
-                                        }else{
-                                          return Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                              child:
-                                              AccountCarInfo(
-                                                  carId: carIdTwo,
-                                                  carName: carNameTwo
-                                              )
-                                          );
-                                        }
-                                      }
-                                  )
+                                Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                    child:
+                                      AccountCarInfo(
+                                          carId: carIdTwo,
+                                          carName: carNameTwo
+                                      )
+                                )
                               ),
                             ),
                           ],
@@ -210,31 +193,22 @@ class _AccountDataState extends State<AccountData> {
                         Column(
                           children: [
                             Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                              child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                                child: Container(
                                   decoration:
                                   BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: const Color(0xFFEFF4F7),
                                   ),
                                   child:
-                                  FutureBuilder(
-                                      future: _getUsersName(),
-                                      builder: (context, snapshot){
-                                        if(snapshot.hasError){
-                                          return const Text('oopsies');
-                                        }else{
-                                          return Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                              child:
-                                              AccountCarInfo(
-                                                  carId: carIdThree,
-                                                  carName: carNameThree
-                                              )
-                                          );
-                                        }
-                                      }
-                                  )
+                                Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                    child:
+                                      AccountCarInfo(
+                                          carId: carIdThree,
+                                          carName: carNameThree
+                                      )
+                                )
                               ),
                             ),
                           ],
@@ -242,40 +216,34 @@ class _AccountDataState extends State<AccountData> {
                         Column(
                           children: [
                             Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                              child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                                child: Container(
                                   decoration:
                                   BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: const Color(0xFFEFF4F7),
                                   ),
                                   child:
-                                  FutureBuilder(
-                                      future: _getUsersName(),
-                                      builder: (context, snapshot){
-                                        if(snapshot.hasError){
-                                          return const Text('oopsies');
-                                        }else{
-                                          return Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                              child:
-                                              AccountCarInfo(
-                                                  carId: carIdFour,
-                                                  carName: carNameFour
-                                              )
-                                          );
-                                        }
-                                      }
-                                  )
+                                Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                    child:
+                                      AccountCarInfo(
+                                          carId: carIdFour,
+                                          carName: carNameFour
+                                      )
+                                )
                               ),
                             ),
                           ],
                         ),
                       ],
                     );
+                  }else{
+                    return const Text('loading');
                   }
                 }
-            ),
+            )
+
            ]
         )
     );
